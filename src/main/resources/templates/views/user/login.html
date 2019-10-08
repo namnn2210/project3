@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/master_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/custom/login.css}"/>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div class="wrapper fadeInDown">
+            <div id="formContent">
+                <!-- Tabs Titles -->
+                <!-- Icon -->
+                <div class="fadeIn first">
+                    <img th:src="@{/images/logo.png}" id="icon" alt="User Icon" />
+                </div>
+                <!-- Login Form -->
+                <form>
+                    <input type="text" id="login" class="fadeIn second" name="login" placeholder="Username">
+                    <input type="text" id="password" class="fadeIn third" name="login" placeholder="Password">
+                    <input type="submit" class="fadeIn fourth" value="Log In">
+                </form>
+
+                <div id="formFooter">
+                    <span>Don't have an account? <a class="underlineHover" th:href="@{/register}">Click here to register.</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

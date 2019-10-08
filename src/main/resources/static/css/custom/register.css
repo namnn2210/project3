@@ -1,0 +1,19 @@
+*[role="form"] {
+    max-width: 75%;
+    padding: 15px;
+    margin: 5% 7% 5% 7%;
+}
+
+*[role="form"] h2 {
+    font-family: 'Open Sans' , sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    color: #000000;
+    /*margin-top: 5%;*/
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+.register-block{
+    margin-bottom: 50px;
+}
