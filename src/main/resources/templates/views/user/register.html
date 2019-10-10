@@ -18,6 +18,9 @@
                     <input type="text" id="username" placeholder="First Name" th:field="*{username}" class="form-control" autofocus>
                 </div>
                 <div class="text text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+                <div th:if="${usernameExist}">
+                    <div class="text text-danger">Username is already used</div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="password" class="col-sm-3 control-label">Password*</label>
@@ -39,6 +42,9 @@
                     <input type="email" id="email" th:field="*{email}" placeholder="Email" class="form-control" name= "email">
                 </div>
                 <div class="text text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+                <div th:if="${emailExist}">
+                    <div class="text text-danger">Email is already used</div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="birthDate" class="col-sm-3 control-label">Date of Birth*</label>

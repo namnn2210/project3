@@ -17,10 +17,18 @@
                 <div class="fadeIn first">
                     <img th:src="@{/images/logo.png}" id="icon" alt="User Icon" />
                 </div>
+                <div th:if="${param.error}" class="text text-danger">
+                    Invalid username or password
+                </div>
+                <div th:if="${param.logout}">
+                    <div class="alert alert-info">
+                        You have been logged out.
+                    </div>
+                </div>
                 <!-- Login Form -->
-                <form>
-                    <input type="text" id="login" class="fadeIn second" name="login" placeholder="Username">
-                    <input type="text" id="password" class="fadeIn third" name="login" placeholder="Password">
+                <form th:action="@{/login}" method="post">
+                    <input type="text" id="login" class="fadeIn second" name="username" placeholder="Username">
+                    <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
                     <input type="submit" class="fadeIn fourth" value="Log In">
                 </form>
 
