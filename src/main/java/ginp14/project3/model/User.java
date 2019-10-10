@@ -1,5 +1,6 @@
 package ginp14.project3.model;
 
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -7,16 +8,18 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table(name = "User")
+@Table(name = "user")
 public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private int id;
 
     @Column(name = "username", unique = true)
@@ -24,8 +27,7 @@ public class User implements UserDetails {
     @NotBlank(message = "Username cannot be empty")
     private String username;
 
-    @Column(name = "password")
-    @Size(min = 8, max = 20, message = "Password must be between 8 and 20 characters")
+    @Column(name = "password", columnDefinition = "varchar(255)")
     @NotBlank(message = "Password cannot be empty")
     private String password;
 
@@ -56,13 +58,21 @@ public class User implements UserDetails {
     @JoinColumn(name = "role_id")
     private Role role;
 
-    @Column(name = "status", nullable = false)
+    @Column(name = "status", columnDefinition = "tinyint(1)")
     private boolean status;
+
+    @Column(name = "created_at")
+    @UpdateTimestamp
+    private Timestamp created_at;
+
+    @Column(name = "updated_at")
+    @UpdateTimestamp
+    private Timestamp updated_at;
 
     public User() {
     }
 
-    public User(@Size(min = 5, max = 20, message = "Username must be between 8 and 20 characters") @NotBlank(message = "Username cannot be empty") String username, @Size(min = 8, max = 20, message = "Password must be between 8 and 20 characters") @NotBlank(message = "Password cannot be empty") String password, @NotBlank(message = "Full name cannot be empty") String fullName, @NotBlank(message = "Please select date of birth") String dob, int gender, @NotBlank(message = "Email cannot be empty") String email, @NotBlank(message = "Address cannot be empty") String address, String phone, Role role, boolean status) {
+    public User(@Size(min = 5, max = 20, message = "Username must be between 8 and 20 characters") @NotBlank(message = "Username cannot be empty") String username, @NotBlank(message = "Password cannot be empty") String password, @NotBlank(message = "Full name cannot be empty") String fullName, @NotBlank(message = "Please select date of birth") String dob, int gender, @NotBlank(message = "Email cannot be empty") String email, @NotBlank(message = "Address cannot be empty") String address, @NotBlank(message = "Phone cannot be empty") String phone, Role role, boolean status, Timestamp created_at, Timestamp updated_at) {
         this.username = username;
         this.password = password;
         this.fullName = fullName;
@@ -73,6 +83,8 @@ public class User implements UserDetails {
         this.phone = phone;
         this.role = role;
         this.status = status;
+        this.created_at = created_at;
+        this.updated_at = updated_at;
     }
 
     public int getId() {
@@ -153,6 +165,22 @@ public class User implements UserDetails {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public Timestamp getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(Timestamp created_at) {
+        this.created_at = created_at;
+    }
+
+    public Timestamp getUpdated_at() {
+        return updated_at;
+    }
+
+    public void setUpdated_at(Timestamp updated_at) {
+        this.updated_at = updated_at;
     }
 
     @Override
