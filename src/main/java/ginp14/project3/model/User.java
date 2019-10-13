@@ -1,6 +1,7 @@
 package ginp14.project3.model;
 
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.mapping.Join;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -69,10 +70,13 @@ public class User implements UserDetails {
     @UpdateTimestamp
     private Timestamp updated_at;
 
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders = new ArrayList<>();
+
     public User() {
     }
 
-    public User(@Size(min = 5, max = 20, message = "Username must be between 8 and 20 characters") @NotBlank(message = "Username cannot be empty") String username, @NotBlank(message = "Password cannot be empty") String password, @NotBlank(message = "Full name cannot be empty") String fullName, @NotBlank(message = "Please select date of birth") String dob, int gender, @NotBlank(message = "Email cannot be empty") String email, @NotBlank(message = "Address cannot be empty") String address, @NotBlank(message = "Phone cannot be empty") String phone, Role role, boolean status, Timestamp created_at, Timestamp updated_at) {
+    public User(@Size(min = 5, max = 20, message = "Username must be between 8 and 20 characters") @NotBlank(message = "Username cannot be empty") String username, @NotBlank(message = "Password cannot be empty") String password, @NotBlank(message = "Full name cannot be empty") String fullName, @NotBlank(message = "Please select date of birth") String dob, int gender, @NotBlank(message = "Email cannot be empty") String email, @NotBlank(message = "Address cannot be empty") String address, @NotBlank(message = "Phone cannot be empty") String phone, Role role, boolean status, Timestamp created_at, Timestamp updated_at, List<Order> orders) {
         this.username = username;
         this.password = password;
         this.fullName = fullName;
@@ -85,6 +89,7 @@ public class User implements UserDetails {
         this.status = status;
         this.created_at = created_at;
         this.updated_at = updated_at;
+        this.orders = orders;
     }
 
     public int getId() {
@@ -181,6 +186,14 @@ public class User implements UserDetails {
 
     public void setUpdated_at(Timestamp updated_at) {
         this.updated_at = updated_at;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 
     @Override
