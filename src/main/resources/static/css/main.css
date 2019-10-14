@@ -627,7 +627,7 @@ iframe {
   padding-right: 15px;
 }
 
-.main_menu > li > a {
+.main_menu > li > a,  .authenticated-username{
   font-family: Montserrat-Regular;
   font-size: 20px;
   color: #FFFFFF;

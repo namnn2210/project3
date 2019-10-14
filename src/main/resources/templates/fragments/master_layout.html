@@ -5,22 +5,21 @@
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- CSS -->
-    <link th:href="@{//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}" rel="stylesheet" id="bootstrap-css">
-    <script th:src="@{//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js}"></script>
-    <script th:src="@{//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js}"></script>
+<!--    <link th:href="@{//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}" rel="stylesheet" id="bootstrap-css">-->
+<!--    <script th:src="@{//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js}"></script>-->
+<!--    <script th:src="@{//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js}"></script>-->
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="images/favicon.png" th:href="@{/images/favicon.png}"/>
-    <!--<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
-    &lt;!&ndash;===============================================================================================&ndash;&gt;
-&lt;!&ndash;    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">&ndash;&gt;
-    &lt;!&ndash;===============================================================================================&ndash;&gt;
-    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    &lt;!&ndash;===============================================================================================&ndash;&gt;
-    <link rel="stylesheet" type="text/css" href="fonts/themify/themify-icons.css">
-    &lt;!&ndash;===============================================================================================&ndash;&gt;
-    <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-    &lt;!&ndash;===============================================================================================&ndash;&gt;
-    <link rel="stylesheet" type="text/css" href="fonts/elegant-font/html-css/style.css">-->
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/vendor/bootstrap/css/bootstrap.min.css}">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/fonts/themify/themify-icons.css}">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/fonts/Linearicons-Free-v1.0.0/icon-font.min.css}">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/fonts/elegant-font/html-css/style.css}">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" th:href="@{/css/vendor/animate/animate.css}">
     <!--===============================================================================================-->
@@ -41,7 +40,7 @@
     <!--===============================================================================================-->
 
 </head>
-<body>
+<body class="animsition">
     <header th:replace="fragments/header :: header"></header>
     <div layout:fragment="content"></div>
     <footer th:replace="fragments/footer :: footer"></footer>
@@ -63,7 +62,7 @@
     <script type="text/javascript" th:src="@{/css/vendor/animsition/js/animsition.min.js}"></script>
     <!--===============================================================================================-->
     <script type="text/javascript" th:src="@{/css/vendor/bootstrap/js/popper.js}"></script>
-    <!--<script type="text/javascript" th:src="@{/css/vendor/bootstrap/js/bootstrap.min.js}"></script>-->
+    <script type="text/javascript" th:src="@{/css/vendor/bootstrap/js/bootstrap.min.js}"></script>
     <!--===============================================================================================-->
     <script type="text/javascript" th:src="@{/css/vendor/select2/select2.min.js}"></script>
     <script type="text/javascript">
