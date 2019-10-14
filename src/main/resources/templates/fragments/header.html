@@ -5,6 +5,7 @@
         <!-- Header desktop -->
         <div class="container-menu-header">
             <div class="topbar">
+
                 <!-- Logo -->
                 <a th:href="@{/homepage}" class="logo">
                     <img src="/static/images/logo.png" th:src="@{/images/logo.png}" alt="IMG-LOGO">
@@ -29,30 +30,12 @@
                                 <a th:href="@{/homepage}">Home</a>
                             </li>
 
-                            <li>
-                                <a href="#">National Teams</a>
-                                <ul class="sub_menu">
-                                    <li><a href="#">Spain</a></li>
-                                    <li><a href="#">England</a></li>
-                                    <li><a href="#">Germany</a></li>
-                                </ul>
-                            </li>
-
                             <li class="sale">
-                                <a href="#">Clubs</a>
+                                <a th:href="@{/products/all}">Products</a>
                                 <ul class="sub_menu">
-                                    <li><a href="#">Manchester United</a></li>
-                                    <li><a href="#">Chelsea</a></li>
-                                    <li><a href="#">Liverpool</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="#">Accessories</a>
-                                <ul class="sub_menu">
-                                    <li><a href="#">Manchester United</a></li>
-                                    <li><a href="#">Chelsea</a></li>
-                                    <li><a href="#">Liverpool</a></li>
+                                    <li th:each="category:${categories}" >
+                                        <a th:href="@{/products/category(categoryId=${category.id})}" th:text="${category.name}">Long sleeves</a>
+                                    </li>
                                 </ul>
                             </li>
 

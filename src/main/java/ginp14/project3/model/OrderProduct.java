@@ -19,13 +19,17 @@ public class OrderProduct implements Serializable {
     @Column(name = "quantity")
     private int quantity;
 
+    @Column(name = "size")
+    private String size;
+
     public OrderProduct() {
     }
 
-    public OrderProduct(Order order, Product product, int quantity) {
+    public OrderProduct(Order order, Product product, int quantity, String size) {
         this.order = order;
         this.product = product;
         this.quantity = quantity;
+        this.size = size;
     }
 
     public Order getOrder() {
@@ -50,5 +54,13 @@ public class OrderProduct implements Serializable {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
     }
 }

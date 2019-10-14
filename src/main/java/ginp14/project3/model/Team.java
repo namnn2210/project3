@@ -11,12 +11,12 @@ public class Team {
     private int id;
 
     @Column(name = "team_name")
-    private int name;
+    private String name;
 
     public Team() {
     }
 
-    public Team(int name) {
+    public Team(String name) {
         this.name = name;
     }
 
@@ -28,11 +28,11 @@ public class Team {
         this.id = id;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 }
