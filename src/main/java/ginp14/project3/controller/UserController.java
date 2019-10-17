@@ -21,31 +21,29 @@ public class UserController {
     @GetMapping("/login")
     public String showLogin(Model model) {
         User user = new User();
-        model.addAttribute("user",user);
+        model.addAttribute("user", user);
         return "views/user/login";
     }
 
     @GetMapping("/register")
     public String showRegister(Model model) {
         User user = new User();
-        model.addAttribute("user",user);
+        model.addAttribute("user", user);
         return "views/user/register";
     }
 
     @PostMapping("/userRegisterProcess")
-    public String userRegisterProcess(@Valid @ModelAttribute("user") User user, BindingResult result, Model model){
+    public String userRegisterProcess(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "views/user/register";
         }
-        if(userService.isUserExisted(user.getUsername())) {
-            model.addAttribute("usernameExist",true);
+        if (userService.isUserExisted(user.getUsername())) {
+            model.addAttribute("usernameExist", true);
             return "views/user/register";
-        }
-        else if(userService.isEmailExisted(user.getEmail())) {
-            model.addAttribute("emailExist",true);
+        } else if (userService.isEmailExisted(user.getEmail())) {
+            model.addAttribute("emailExist", true);
             return "views/user/register";
-        }
-        else {
+        } else {
             userService.saveUser(user);
         }
         return "redirect:/homepage";
