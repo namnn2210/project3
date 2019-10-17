@@ -4137,3 +4137,7 @@ RESPONSIVE  RESPONSIVE  RESPONSIVE  RESPONSIVE   RESPONSIVE
 		width: 100%;
 	}
 }
+.selection-2,.choose-size {
+    border: none;
+    background-color: white;
+}

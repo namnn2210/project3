@@ -78,7 +78,7 @@
                     <!--  -->
                     <div class="flex-sb-m flex-w p-b-35">
                         <div class="flex-w">
-                            <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
+                            <div class="rs2-select2 bo4 of-hidden m-t-5 m-b-5 m-r-10">
                                 <select class="selection-2" name="sorting">
                                     <option>Default Sorting</option>
                                     <option>Popularity</option>
@@ -87,7 +87,7 @@
                                 </select>
                             </div>
 
-                            <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
+                            <div class="rs2-select2 bo4 of-hidden m-t-5 m-b-5 m-r-10">
                                 <select class="selection-2" name="sorting">
                                     <option>Price</option>
                                     <option>$0.00 - $50.00</option>
@@ -101,8 +101,7 @@
                         </div>
 
                         <span class="s-text8 p-t-5 p-b-5"
-                              th:text="'Showing 1–12 of ' + ${allProducts.size()} + ' results'">
-
+                              th:text="'Showing 1-' + ' results'">
 						</span>
                     </div>
 
@@ -112,7 +111,7 @@
                         <div th:each="product : ${allProducts}" class="col-sm-12 col-md-6 col-lg-4">
                             <!-- Block2 -->
                             <div class="block2">
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
+                                <div class="block2-img wrap-pic-w of-hidden pos-relative">
                                     <img th:src="@{${product.url}}" alt="IMG-PRODUCT">
 
                                     <div class="block2-overlay trans-0-4">
@@ -131,8 +130,7 @@
                                         Herschel supply co 25l
                                     </a>
 
-                                    <span class="block2-price m-text6 p-r-5" th:with="price = ${product.price}"
-                                          th:text="${#numbers.formatDecimal(price,0,'COMMA',0,'POINT')} + ' VND'">
+                                    <span class="block2-price m-text6 p-r-5" th:text="'Price: ' + '$' + ${product.price}">
 										        $75.00
                                     </span>
                                 </div>
@@ -141,13 +139,34 @@
 
 
                         <!-- Pagination -->
-                        <div class="pagination flex-m flex-w p-t-26">
-                            <a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>
-                            <a href="#" class="item-pagination flex-c-m trans-0-4">2</a>
-                        </div>
+<!--                        <div class="pagination flex-m flex-w p-t-26">-->
+<!--                            <a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>-->
+<!--                            <a href="#" class="item-pagination flex-c-m trans-0-4">2</a>-->
+<!--                        </div>-->
+                    </div>
+                    <div class="pagination flex-m flex-w p-t-26">
+                            <span th:if="${allProducts.hasPrevious()}">
+                                <a class="item-pagination flex-c-m trans-0-4" th:href="@{/products/all(page=${allProducts.number-1})}">
+                                    <
+                                </a>
+                            </span>
+                        <th:block th:each="i: ${#numbers.sequence(0, allProducts.totalPages - 1)}">
+                                <span  th:if="${allProducts.number == i}" >
+                                    <a class="item-pagination flex-c-m trans-0-4 active-pagination" th:href="@{/products/all(page=${i})}">[[${i}+1]]</a>
+                                </span>
+                            <span th:unless="${allProducts.number == i}">
+                                    <a class="item-pagination flex-c-m trans-0-4" th:href="@{/products/all(page=${i})}">[[${i}+1]]</a>
+                                </span>
+                        </th:block>
+                        <span th:if="${allProducts.hasNext()}">
+                                <a class="item-pagination flex-c-m trans-0-4" th:href="@{/products/all(page=${allProducts.number+1})}">
+                                    >
+                                </a>
+                            </span>
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 </div>
 

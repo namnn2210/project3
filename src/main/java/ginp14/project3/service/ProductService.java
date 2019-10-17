@@ -1,11 +1,15 @@
 package ginp14.project3.service;
 
 import ginp14.project3.model.Product;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
 public interface ProductService {
-    public List<Product> findAll();
-    public Product findById(int id);
-    public List<Product> findAllByCategoryId(int id);
+    Page<Product> findAll(Pageable pageable);
+    List<Product> findAll();
+    Product findById(int id);
+    List<Product> findAllByCategoryId(int id);
+    Page<Product> findAllByCategoryId(int id, Pageable pageable);
 }

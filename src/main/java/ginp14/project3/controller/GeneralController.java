@@ -3,6 +3,7 @@ package ginp14.project3.controller;
 import ginp14.project3.service.CategoryService;
 import ginp14.project3.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
