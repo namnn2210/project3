@@ -1,21 +1,27 @@
 package ginp14.project3.controller;
 
-import ginp14.project3.model.CartItem;
-import ginp14.project3.model.Product;
-import ginp14.project3.model.ProductCriteria;
-import ginp14.project3.model.ShoppingCart;
+import com.cloudinary.utils.ObjectUtils;
+import ginp14.project3.config.CloudinaryConfig;
+import ginp14.project3.model.*;
 import ginp14.project3.service.CategoryService;
 import ginp14.project3.service.ProductService;
+import ginp14.project3.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -26,6 +32,44 @@ public class ProductController {
     private ProductService productService;
     @Autowired
     private CategoryService categoryService;
+    @Autowired
+    private TeamService teamService;
+    @Autowired
+    private CloudinaryConfig cloudinary;
+
+    @PostMapping("/save")
+    public String saveProduct(@Valid @ModelAttribute("product") Product product, BindingResult result, @RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes, Model model) {
+        if (result.hasErrors()) {
+            List<Category> categories = categoryService.findAll();
+            List<Team> teams = teamService.findAll();
+            model.addAttribute("teams",teams);
+            model.addAttribute("categories",categories);
+            return "views/admin/add_product";
+        }
+        else if(product.getUrl() == null) {
+            if(file.isEmpty()) {
+                model.addAttribute("message","No file uploaded. Product must have an image");
+                List<Category> categories = categoryService.findAll();
+                List<Team> teams = teamService.findAll();
+                model.addAttribute("teams",teams);
+                model.addAttribute("categories",categories);
+                return "views/admin/add_product";
+            }
+            try {
+                Map uploadResult = cloudinary.upload(file.getBytes(), ObjectUtils.asMap("resourcetype", "auto"));
+                String url = uploadResult.get("url").toString();
+                product.setUrl(url);
+                productService.save(product);
+            } catch (IOException e){
+                e.printStackTrace();
+                model.addAttribute("message", "Sorry I can't upload that!");
+            }
+        }
+        else {
+            productService.save(product);
+        }
+        return "redirect:/admin/listProducts";
+    }
 
     @GetMapping("/all")
     public String showAllProducts(Model model, @PageableDefault(size = 6) Pageable pageable) {

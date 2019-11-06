@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/master_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/custom/order_history.css}"/>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="order-history-block container">
+        <div class="row">
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header border-0">
+                        <h3 class="mb-0">Order History</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Order #</th>
+                                <th scope="col">Order Date</th>
+                                <th scope="col">Total Price</th>
+                                <th scope="col">Products</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                            </thead>
+                            <tbody th:if="${orders.size() > 0}" th:each="order:${orders}">
+                            <tr>
+                                <th th:text="${order.id}" scope="row"></th>
+                                <td th:text="${order.created_at}">
+                                    $2,500 USD
+                                </td>
+                                <td th:text="'$'+${order.totalPrice}"></td>
+                                <td>
+                                    <table class="table table-borderless">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Size</th>
+                                            <th scope="col">Quantity</th>
+                                            <th scope="cold">Unit Price</th>
+                                        </tr>
+                                        </thead>
+                                        <tr th:each="product:${maps.get(order.id)}">
+                                            <td th:text="${product.product.name}"></td>
+                                            <td th:text="${product.size}"></td>
+                                            <td th:text="${product.quantity}"></td>
+                                            <td th:text="'$' + ${product.product.price}"></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td th:text="${order.status}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

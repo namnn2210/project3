@@ -17,4 +17,14 @@ public class CategoryServiceImpl implements CategoryService{
     public List<Category> findAll() {
         return categoryRepository.findAll();
     }
+
+    @Override
+    public void save(Category category) {
+        categoryRepository.save(category);
+    }
+
+    @Override
+    public Category findById(int id) {
+        return categoryRepository.findById(id);
+    }
 }

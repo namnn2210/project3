@@ -6,4 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 public interface TeamRepository extends JpaRepository<Team, Integer> {
+    Team findById(int id);
 }

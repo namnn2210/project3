@@ -5,5 +5,7 @@ import ginp14.project3.model.Category;
 import java.util.List;
 
 public interface CategoryService {
-    public List<Category> findAll();
+    List<Category> findAll();
+    void save(Category category);
+    Category findById(int id);
 }

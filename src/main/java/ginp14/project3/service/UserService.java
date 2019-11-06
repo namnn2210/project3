@@ -6,9 +6,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import java.util.List;
 
 public interface UserService extends UserDetailsService {
-    public User findByUsername(String username);
-    public void saveUser(User user);
-    public List<User> findAll();
-    public boolean isUserExisted(String username);
-    public boolean isEmailExisted(String email);
+    User findByUsername(String username);
+    void saveUser(User user);
+    List<User> findAll();
+    boolean isUserExisted(String username);
+    boolean isEmailExisted(String email);
+    User findById(int id);
+    void addUser(User user);
 }

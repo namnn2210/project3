@@ -2,9 +2,9 @@ package ginp14.project3.model;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotBlank;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "product")
@@ -16,12 +16,14 @@ public class Product {
     private int id;
 
     @Column(name = "product_name")
+    @NotBlank(message = "Product name cannot be blank")
     private String name;
 
     @Column(name = "product_url")
     private String url;
 
     @Column(name = "product_price", columnDefinition = "double")
+    @DecimalMin(value = "1", message = "Min price is $1")
     private double price;
 
     @Column(name = "status", columnDefinition = "tinyint(1)")
@@ -35,9 +37,6 @@ public class Product {
     @JoinColumn(name = "team_id", nullable = false)
     private Team team;
 
-    @OneToMany(mappedBy = "product")
-    private List<OrderProduct> orderProducts = new ArrayList<>();
-
     @Column(name = "created_at")
     @UpdateTimestamp
     private Timestamp created_at;
@@ -50,14 +49,13 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, String url, double price, boolean status, Category category, Team team, List<OrderProduct> orderProducts, Timestamp created_at, Timestamp updated_at) {
+    public Product(@NotBlank(message = "Product name cannot be blank") String name, String url, @DecimalMin(value = "0.5", message = "Min price is $0.5") double price, boolean status, Category category, Team team, Timestamp created_at, Timestamp updated_at) {
         this.name = name;
         this.url = url;
         this.price = price;
         this.status = status;
         this.category = category;
         this.team = team;
-        this.orderProducts = orderProducts;
         this.created_at = created_at;
         this.updated_at = updated_at;
     }
@@ -116,14 +114,6 @@ public class Product {
 
     public void setTeam(Team team) {
         this.team = team;
-    }
-
-    public List<OrderProduct> getOrderProducts() {
-        return orderProducts;
-    }
-
-    public void setOrderProducts(List<OrderProduct> orderProducts) {
-        this.orderProducts = orderProducts;
     }
 
     public Timestamp getCreated_at() {

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/admin/master_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+</head>
+<body>
+    <div layout:fragment="content" class="container-fluid">
+        <div class="col-md-12 widget-holder">
+            <div class="widget-bg">
+                <div class="widget-heading clearfix">
+                    <h5>List Users</h5>
+                </div>
+                <!-- /.widget-heading -->
+                <div class="widget-body clearfix">
+                    <table class="table table-editable">
+                        <thead>
+                        <tr>
+                            <th data-identifier="">ID</th>
+                            <th>Username</th>
+                            <th data-editable="">Password</th>
+                            <th data-editable="">Full Name</th>
+                            <th data-editable="">Email</th>
+                            <th data-editable="">Phone</th>
+                            <th data-editable="">Address</th>
+                            <th data-editable="">Date of birth</th>
+                            <th data-editable="">Gender</th>
+                            <th data-editable="">Role</th>
+                            <th data-editable="">Created at</th>
+                            <th data-editable="">Status</th>
+                            <th class="tabledit-toolbar-column">Action</th></tr>
+                        </thead>
+                        <tbody th:each="user:${users}">
+                        <tr th:id="${user.id}" id="1">
+                            <td><span class="tabledit-span tabledit-identifier" th:text="${user.id}">1</span><input class="tabledit-input tabledit-identifier" type="hidden" name="ID" value="1" disabled=""></td>
+                            <td class="tabledit-view-mode"><span class="tabledit-span" th:text="${user.username}">Bob Williams</span><input class="tabledit-input form-control input-sm" type="text" name="Name" value="Bob Williams" style="display: none;" disabled=""></td>
+                            <td class="tabledit-view-mode"><span class="tabledit-span" th:text="${user.password}">$23,566</span><input class="tabledit-input form-control input-sm" type="text" name="Salary" value="$23,566" style="display: none;" disabled=""></td>
+                            <td class="tabledit-view-mode"><span class="tabledit-span" th:text="${user.fullName}">$23,566</span></td>
+                            <td class="tabledit-view-mode"><span class="tabledit-span" th:text="${user.email}">$23,566</span></td>
+                            <td class="tabledit-view-mode"><span class="tabledit-span" th:text="${user.phone}">$23,566</span></td>
+                            <td class="tabledit-view-mode"><span class="tabledit-span" th:text="${user.address}">$23,566</span></td>
+                            <td class="tabledit-view-mode"><span class="tabledit-span" th:text="${user.dob}">$23,566</span></td>
+                            <td class="tabledit-view-mode">
+                                <span class="tabledit-span" th:if="${user.gender} == 1">Female</span>
+                                <span class="tabledit-span" th:if="${user.gender} == 2">Male</span>
+                                <span class="tabledit-span" th:if="${user.gender} == 3">Not prefer to say</span>
+                            </td>
+                            <td class="tabledit-view-mode">
+                                <span class="tabledit-span" th:if="${user.role.id} == 1">User</span>
+                                <span class="tabledit-span" th:if="${user.role.id} == 2">Store Manager</span>
+                                <span class="tabledit-span" th:if="${user.role.id} == 3">Admin</span>
+                            </td>
+                            <td class="tabledit-view-mode"><span class="tabledit-span" th:text="${user.created_at}">$23,566</span></td>
+                            <td class="tabledit-view-mode">
+                                <span class="badge badge-success py-1 px-2" th:if="${user.status} == true">Active</span>
+                                <span class="badge badge-danger py-1 px-2" th:if="${user.status} == false">Inactive</span>
+                            </td>
+                            <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+                                <div class="btn-group btn-group-sm" style="float: none;">
+                                    <a th:href="@{/admin/editUser(userId=${user.id})}"><button type="button" class="tabledit-edit-button btn btn-sm btn-default" style="float: none;"><span class="glyphicon glyphicon-pencil"></span></button></a>
+                                    <button type="button" class="tabledit-delete-button btn btn-sm btn-default" style="float: none;"><span class="glyphicon glyphicon-trash"></span></button>
+                                </div>
+                            </div></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.widget-body -->
+            </div>
+            <!-- /.widget-bg -->
+        </div>
+    </div>
+</body>
+</html>

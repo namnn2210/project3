@@ -15,7 +15,7 @@
             <div class="form-group">
                 <label for="username" class="col-sm-3 control-label">Username</label>
                 <div class="col-sm-9">
-                    <input type="text" id="username" placeholder="First Name" th:field="*{username}" class="form-control" autofocus>
+                    <input type="text" id="username" placeholder="Username" th:field="*{username}" class="form-control" autofocus>
                 </div>
                 <div class="text text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
                 <div th:if="${usernameExist}">
@@ -32,7 +32,7 @@
             <div class="form-group">
                 <label for="fullName" class="col-sm-3 control-label">Full Name</label>
                 <div class="col-sm-9">
-                    <input type="text" id="fullName" th:field="*{fullName}" placeholder="Last Name" class="form-control" autofocus>
+                    <input type="text" id="fullName" th:field="*{fullName}" placeholder="Full Name" class="form-control" autofocus>
                 </div>
                 <div class="text text-danger" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></div>
             </div>
@@ -63,7 +63,7 @@
             <div class="form-group">
                 <label for="phoneNumber" class="col-sm-3 control-label">Phone number </label>
                 <div class="col-sm-9">
-                    <input type="text" id="phoneNumber" th:field="*{phone}" placeholder="Phone number" class="form-control">
+                    <input type="text" maxlength="10" id="phoneNumber" th:field="*{phone}" placeholder="Phone number" class="form-control">
                 </div>
                 <div class="text text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
             </div>

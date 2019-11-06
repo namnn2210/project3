@@ -8,6 +8,11 @@ $(document).ready(function () {
         event.preventDefault();
         updateCart();
     });
+
+    // $('.btn-process-checkout').click(function (event) {
+    //     event.preventDefault();
+    //     processCheckout();
+    // })
 });
 
 $('.btn-update-cart').click(function () {
@@ -71,3 +76,22 @@ function updateCart() {
         }
     });
 }
+
+function processCheckout() {
+    var name = $('.checkout-name').val();
+    var address = $('.checkout-address').val();
+    var phone = $('.checkout-phone').val();
+    if(name === '') {
+        swal("Please enter your name");
+    }
+    else if (address === '') {
+        swal("Please enter your address");
+    }
+    else if (phone === '') {
+        swal("Please enter your phone");
+    }
+    else {
+
+    }
+}
+

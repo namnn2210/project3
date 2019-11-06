@@ -3,25 +3,29 @@ INSERT INTO role(role_name) VALUES ('USER');
 INSERT INTO role(role_name) VALUES ('MANAGER');
 INSERT INTO role(role_name) VALUES ('ADMIN');
 
+--User Table Data
+INSERT INTO `user` ( `address`, `created_at`, `dob`, `email`, `full_name`, `gender`, `password`, `phone`, `status`, `updated_at`, `username`, `role_id`) VALUES
+('9B Le Quy Don', '2019-10-31 10:33:51', '1997-10-22', 'nam@gmailcom', 'Ngo Ngoc Nam', 2, '$2a$10$JrfQrN9sNr1nqJ7qFt55oOPjHcLIztzr2px6yLpeNrL1GGuNMVcHS', '0373924314', 1, '2019-10-31 10:33:51', 'namngocngo22', 1);
+
 -- Category Table Data
-INSERT INTO category(cat_name, description) VALUES ('Long sleeves','Long sleeves clothes');
-INSERT INTO category(cat_name, description) VALUES ('Short sleeves', 'Short sleeves clothes');
-INSERT INTO category(cat_name, description) VALUES ('Accessories', 'Football accessories');
-INSERT INTO category(cat_name, description) VALUES ('Trophies, Medals', 'Football trophies and medals');
-INSERT INTO category(cat_name, description) VALUES ('Services', 'Football services');
+INSERT INTO category(cat_name, description,status) VALUES ('Long sleeves','Long sleeves clothes',true);
+INSERT INTO category(cat_name, description,status) VALUES ('Short sleeves', 'Short sleeves clothes',true);
+INSERT INTO category(cat_name, description,status) VALUES ('Accessories', 'Football accessories',true);
+INSERT INTO category(cat_name, description,status) VALUES ('Trophies, Medals', 'Football trophies and medals',true);
+INSERT INTO category(cat_name, description,status) VALUES ('Services', 'Football services',true);
 -- Team Table Data
-INSERT INTO team(team_name) VALUES ('Manchester United');
-INSERT INTO team(team_name) VALUES ('Chelsea');
-INSERT INTO team(team_name) VALUES ('Barcelona');
-INSERT INTO team(team_name) VALUES ('Arsenal');
-INSERT INTO team(team_name) VALUES ('Real Madrid');
-INSERT INTO team(team_name) VALUES ('Manchester City');
-INSERT INTO team(team_name) VALUES ('Liverpool');
-INSERT INTO team(team_name) VALUES ('Athletico Madrid');
-INSERT INTO team(team_name) VALUES ('Juventus');
-INSERT INTO team(team_name) VALUES ('Bayern Munich');
-INSERT INTO team(team_name) VALUES ('Borussia Dortmund');
-INSERT INTO team(team_name) VALUES ('Others');
+INSERT INTO team(team_name,status) VALUES ('Manchester United',true);
+INSERT INTO team(team_name,status) VALUES ('Chelsea',true);
+INSERT INTO team(team_name,status) VALUES ('Barcelona',true);
+INSERT INTO team(team_name,status) VALUES ('Arsenal',true);
+INSERT INTO team(team_name,status) VALUES ('Real Madrid',true);
+INSERT INTO team(team_name,status) VALUES ('Manchester City',true);
+INSERT INTO team(team_name,status) VALUES ('Liverpool',true);
+INSERT INTO team(team_name,status) VALUES ('Athletico Madrid',true);
+INSERT INTO team(team_name,status) VALUES ('Juventus',true);
+INSERT INTO team(team_name,status) VALUES ('Bayern Munich',true);
+INSERT INTO team(team_name,status) VALUES ('Borussia Dortmund',true);
+INSERT INTO team(team_name,status) VALUES ('Others',true);
 
 -- Product Table Data
 -- Football Shirts

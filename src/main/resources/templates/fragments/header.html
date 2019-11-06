@@ -54,7 +54,12 @@
             <!-- Header Icon -->
             <div class="header-icons">
                 <div sec:authorize="isAuthenticated()">
-                    <a class="authenticated-username" href="#" sec:authentication="name"></a>
+                    <a class="authenticated-username dropdown-toggle" data-toggle="dropdown" th:href="@{/profile}" sec:authentication="name"></a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" th:href="@{/profile}">Profile</a>
+                        <a class="dropdown-item" th:href="@{/orderHistory}">Order History</a>
+                    </div>
+                    <a class="authenticated-username" th:href="@{/logout}"> Logout</a>
                 </div>
                 <div sec:authorize="!isAuthenticated()">
                     <a th:href="@{/login}" class="header-wrapicon1 dis-block">

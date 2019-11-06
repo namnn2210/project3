@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-public class UserServiceImpl  implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
@@ -34,7 +34,7 @@ public class UserServiceImpl  implements UserService{
     }
 
     @Override
-    public void saveUser(User user){
+    public void saveUser(User user) {
         Role role = roleRepository.findById(1);
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setRole(role);
@@ -44,13 +44,13 @@ public class UserServiceImpl  implements UserService{
 
     @Override
     public List<User> findAll() {
-        return null;
+        return userRepository.findAll();
     }
 
     @Override
     public boolean isUserExisted(String username) {
         User user = userRepository.findByUsername(username);
-        if(user != null) {
+        if (user != null) {
             return true;
         }
         return false;
@@ -59,10 +59,22 @@ public class UserServiceImpl  implements UserService{
     @Override
     public boolean isEmailExisted(String email) {
         User user = userRepository.findByEmail(email);
-        if(user != null) {
+        if (user != null) {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public User findById(int id) {
+        return userRepository.findById(id);
+    }
+
+    @Override
+    public void addUser(User user) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setStatus(true);
+        userRepository.save(user);
     }
 
     @Override
@@ -71,6 +83,6 @@ public class UserServiceImpl  implements UserService{
         if (user == null) {
             throw new UsernameNotFoundException("User not found");
         }
-            return user;
+        return user;
     }
 }
