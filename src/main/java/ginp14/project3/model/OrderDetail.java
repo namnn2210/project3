@@ -2,14 +2,19 @@ package ginp14.project3.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
-@Table(name = "order_product")
-public class OrderProduct implements Serializable {
+@Table(name = "order_detail")
+public class OrderDetail implements Serializable {
 
     @Id
+    @Column(name = "order_detail_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
     @ManyToOne
-    @JoinColumn(name = "order_id")
+    @JoinColumn(name = "order_id", nullable = false)
     private Order order;
 
     @ManyToOne
@@ -22,14 +27,34 @@ public class OrderProduct implements Serializable {
     @Column(name = "size")
     private String size;
 
-    public OrderProduct() {
+    @Column(name = "item_total_price")
+    private double itemTotalPrice;
+
+    public OrderDetail() {
     }
 
-    public OrderProduct(Order order, Product product, int quantity, String size) {
+    public OrderDetail(Order order, Product product, int quantity, String size, double itemTotalPrice) {
         this.order = order;
         this.product = product;
         this.quantity = quantity;
         this.size = size;
+        this.itemTotalPrice = itemTotalPrice;
+    }
+
+    public double getItemTotalPrice() {
+        return itemTotalPrice;
+    }
+
+    public void setItemTotalPrice(double itemTotalPrice) {
+        this.itemTotalPrice = itemTotalPrice;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Order getOrder() {
@@ -63,4 +88,5 @@ public class OrderProduct implements Serializable {
     public void setSize(String size) {
         this.size = size;
     }
+
 }

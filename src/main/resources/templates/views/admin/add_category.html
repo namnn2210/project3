@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/admin/master_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content" class="container-fluid">
+    <div class="col-md-12 widget-holder">
+        <div class="widget-bg">
+            <div class="widget-body clearfix">
+                <h5 class="box-title mr-b-0">Add new category</h5>
+                <p class="text-muted">Add a new category for your product</p>
+                <form method="post" th:object="${category}" th:action="@{/addCategory}">
+                    <input type="hidden" th:field="*{id}">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="name">Category name</label>
+                                <input th:field="*{name}" class="form-control" id="name" placeholder="Category name"
+                                       type="text">
+                                <div class="text text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <div class="input-group">
+                                    <input class="form-control" id="description" placeholder="Description" th:field="*{description}"
+                                           type="text">
+                                </div>
+                                <div class="text text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions btn-list">
+                        <button class="btn btn-primary" type="submit">Save</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.widget-body -->
+        </div>
+        <!-- /.widget-bg -->
+    </div>
+</div>
+</body>
+</html>

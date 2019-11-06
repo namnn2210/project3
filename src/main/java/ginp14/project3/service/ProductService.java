@@ -12,4 +12,5 @@ public interface ProductService {
     Product findById(int id);
     List<Product> findAllByCategoryId(int id);
     Page<Product> findAllByCategoryId(int id, Pageable pageable);
+    void save(Product product);
 }

@@ -20,8 +20,17 @@ public class Order {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "order",targetEntity = OrderProduct.class)
-    private List<OrderProduct> orderProducts = new ArrayList<>();
+    @Column(name = "shipping_address")
+    private String shippingAddress;
+
+    @Column(name = "shipping_name")
+    private String shippingName;
+
+    @Column(name = "shipping_phone")
+    private String shippingPhone;
+
+    @Column(name = "total_price")
+    private double totalPrice;
 
     @Column(name = "created_at")
     @UpdateTimestamp
@@ -37,9 +46,12 @@ public class Order {
     public Order() {
     }
 
-    public Order(User user, List<OrderProduct> orderProducts, Timestamp created_at, Timestamp updated_at, boolean status) {
+    public Order(User user, String shippingAddress, String shippingName, String shippingPhone, double totalPrice, Timestamp created_at, Timestamp updated_at, boolean status) {
         this.user = user;
-        this.orderProducts = orderProducts;
+        this.shippingAddress = shippingAddress;
+        this.shippingName = shippingName;
+        this.shippingPhone = shippingPhone;
+        this.totalPrice = totalPrice;
         this.created_at = created_at;
         this.updated_at = updated_at;
         this.status = status;
@@ -61,12 +73,36 @@ public class Order {
         this.user = user;
     }
 
-    public List<OrderProduct> getOrderProducts() {
-        return orderProducts;
+    public String getShippingAddress() {
+        return shippingAddress;
     }
 
-    public void setOrderProducts(List<OrderProduct> orderProducts) {
-        this.orderProducts = orderProducts;
+    public void setShippingAddress(String shippingAddress) {
+        this.shippingAddress = shippingAddress;
+    }
+
+    public String getShippingName() {
+        return shippingName;
+    }
+
+    public void setShippingName(String shippingName) {
+        this.shippingName = shippingName;
+    }
+
+    public String getShippingPhone() {
+        return shippingPhone;
+    }
+
+    public void setShippingPhone(String shippingPhone) {
+        this.shippingPhone = shippingPhone;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public Timestamp getCreated_at() {

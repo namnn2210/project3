@@ -79,7 +79,7 @@
                     </button>
                 </div>
             </div>
-
+            <form action="#" th:action="@{/cart/pay}" method="post">
             <!-- Total -->
             <div class="bo9 w-size18 p-l-40 p-r-40 p-t-30 p-b-38 m-t-30 m-r-0 m-l-auto p-lr-15-sm">
                 <!--  -->
@@ -90,17 +90,17 @@
 
                     <div class="w-size20 w-full-sm">
                         <div class="size13 bo4 m-b-12">
-                            <input class="sizefull s-text7 p-l-15 p-r-15" type="text" name="state"
+                            <input class="sizefull s-text7 p-l-15 p-r-15 checkout-name" type="text" name="checkoutName"
                                    placeholder="Full Name">
                         </div>
 
                         <div class="size13 bo4 m-b-22">
-                            <input class="sizefull s-text7 p-l-15 p-r-15" type="text" name="postcode"
+                            <input class="sizefull s-text7 p-l-15 p-r-15 checkout-address" type="text" name="checkoutAddress"
                                    placeholder="Address">
                         </div>
 
                         <div class="size13 bo4 m-b-22">
-                            <input class="sizefull s-text7 p-l-15 p-r-15" type="text" name="postcode"
+                            <input class="sizefull s-text7 p-l-15 p-r-15 checkout-phone" type="text" name="checkoutPhone"
                                    placeholder="Phone number">
                         </div>
 
@@ -120,11 +120,13 @@
 
                 <div class="size15 trans-0-4">
                     <!-- Button -->
-                    <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-                        Proceed to Checkout
-                    </button>
+
+                        <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4 btn-process-checkout">
+                            Proceed to Checkout
+                        </button>
                 </div>
             </div>
+            </form>
         </div>
     </section>
 

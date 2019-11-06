@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/admin/master_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content" class="container-fluid">
+    <div class="col-md-12 widget-holder">
+        <div class="widget-bg">
+            <div class="widget-body clearfix">
+                <h5 class="box-title mr-b-0">Add new user</h5>
+                <p class="text-muted">Add a new admin or store manager</p>
+                <form method="post" th:object="${user}" th:action="@{/addUser}">
+                    <input type="hidden" th:field="*{id}">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input th:field="*{username}" class="form-control" id="username" placeholder="Username"
+                                       type="text">
+                                <div class="text text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+                                <div th:if="${usernameExist}">
+                                    <div class="text text-danger">Username is already used</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <div class="input-group">
+                                    <input class="form-control" id="password" placeholder="Password" th:field="*{password}"
+                                           type="password">
+                                </div>
+                                <div class="text text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="fullName">Full Name</label>
+                                <input th:field="*{fullName}" class="form-control" id="fullName" placeholder="Full Name" type="text">
+                                <div class="text text-danger" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input th:field="*{email}" class="form-control" id="email" placeholder="Email"
+                                       type="email">
+                                <div class="text text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+                                <div th:if="${emailExist}">
+                                    <div class="text text-danger">Email is already used</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="birthDate">Date of Birth</label>
+                                <input type="date" id="birthDate" th:field="*{dob}" class="form-control" placeholder="Date of Birth">
+                                <div class="text text-danger" th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input th:field="*{address}" class="form-control" id="address" placeholder="Address"
+                                       type="text">
+                                <div class="text text-danger" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="phoneNumber">Phone Number</label>
+                                <input type="text" maxlength="10" id="phoneNumber" th:field="*{phone}" class="form-control" placeholder="Phone Number">
+                                <div class="text text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <select id="gender" th:field="*{gender}" class="form-control selectpicker"
+                                        tabindex="-98">
+                                    <option value="1">Female</option>
+                                    <option value="2">Male</option>
+                                    <option value="3">Not prefer to say</option>
+                                </select>
+                                <div class="text text-danger" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="category">Role</label>
+                                <select id="category" th:field="*{role}" class="form-control selectpicker"
+                                        tabindex="-98">
+                                    <th:block th:each="role:${roles}">
+                                        <option th:value="${role.id}" th:text="${role.name}">Mustard</option>
+                                    </th:block>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions btn-list">
+                        <button class="btn btn-primary" type="submit">Save</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.widget-body -->
+        </div>
+        <!-- /.widget-bg -->
+    </div>
+</div>
+</body>
+</html>
