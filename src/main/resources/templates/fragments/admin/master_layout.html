@@ -117,9 +117,9 @@
                             <header class="card-heading-extra">
                                 <div class="row">
                                     <div class="col-8">
-                                        <h3 class="mr-b-10 sub-heading-font-family fw-300">Scott Adams</h3><span class="user--online">Available <i class="material-icons list-icon">expand_more</i></span>
+                                        <h3 sec:authorize="isAuthenticated()"  sec:authentication="name" class="mr-b-10 sub-heading-font-family fw-300">Scott Adams</h3><span class="user--online">Available <i class="material-icons list-icon">expand_more</i></span>
                                     </div>
-                                    <div class="col-4 d-flex justify-content-end"><a href="http://dharansh.in/oscarhtml/ecommerce/logout.html" class="mr-t-10"><i class="material-icons list-icon">power_settings_new</i> Logout</a>
+                                    <div class="col-4 d-flex justify-content-end"><a th:href="@{/admin/logout}" class="mr-t-10"><i class="material-icons list-icon">power_settings_new</i> Logout</a>
                                     </div>
                                     <!-- /.col-4 -->
                                 </div>
@@ -153,20 +153,10 @@
                             <img th:src="@{/css/assets/demo/users/user-image.png}" class="media-object rounded-circle" alt="">
                         </figure>
                         <div class="media-body hide-menu">
-                            <h4 class="media-heading mr-b-5 text-uppercase">Scott Adams</h4><span class="user-type fs-12">Edit Profile (...)</span>
+                            <h4 sec:authorize="isAuthenticated()" sec:authentication="name" class="media-heading mr-b-5 text-uppercase">Scott Adams</h4>
                         </div>
                     </a>
                     <div class="clearfix"></div>
-                    <ul class="nav in side-menu">
-                        <li><a href="page-profile.html"><i class="list-icon material-icons">face</i> My Profile</a>
-                        </li>
-                        <li><a href="app-inbox.html"><i class="list-icon material-icons">mail_outline</i> Inbox</a>
-                        </li>
-                        <li><a href="page-lock-screen.html"><i class="list-icon material-icons">settings</i> Lock Screen</a>
-                        </li>
-                        <li><a href="page-login.html"><i class="list-icon material-icons">settings_power</i> Logout</a>
-                        </li>
-                    </ul>
                 </div>
                 <!-- /.side-user -->
                 <!-- Sidebar Menu -->
@@ -214,7 +204,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="page-login.html"><i class="list-icon material-icons">settings_power</i> <span class="hide-menu">Log Out</span></a>
+                        <li><a th:href="@{/admin/logout}"><i class="list-icon material-icons">settings_power</i> <span class="hide-menu">Log Out</span></a>
                         </li>
                     </ul>
                     <!-- /.side-menu -->

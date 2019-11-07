@@ -41,8 +41,12 @@ public class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
                     .failureUrl("/adminLogin?error=true")
                 .and()
                     .logout()
+                    .logoutUrl("/admin/logout")
                     .permitAll()
                     .logoutSuccessUrl("/adminLogin")
+                .and()
+                    .exceptionHandling()
+                    .accessDeniedPage("/403")
                 .and()
                     .csrf().disable();
     }
