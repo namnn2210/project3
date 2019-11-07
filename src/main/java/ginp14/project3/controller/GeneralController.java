@@ -19,8 +19,8 @@ public class GeneralController {
 
     @GetMapping("/homepage")
     public String showHomepage(Model model) {
-        model.addAttribute("categories", categoryService.findAll());
-        model.addAttribute("products", productService.findAll());
+        model.addAttribute("categories", categoryService.findAllByStatus(true));
+        model.addAttribute("products", productService.findAllByStatus(true));
         return "views/index";
     }
 }

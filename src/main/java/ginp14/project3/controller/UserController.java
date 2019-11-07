@@ -38,7 +38,7 @@ public class UserController {
     @GetMapping("/login")
     public String showLogin(Model model) {
         User user = new User();
-        model.addAttribute("categories", categoryService.findAll());
+        model.addAttribute("categories", categoryService.findAllByStatus(true));
         model.addAttribute("user", user);
         return "views/user/login";
     }
@@ -47,7 +47,7 @@ public class UserController {
     public String showRegister(Model model) {
         User user = new User();
         model.addAttribute("user", user);
-        model.addAttribute("categories", categoryService.findAll());
+        model.addAttribute("categories", categoryService.findAllByStatus(true));
         return "views/user/register";
     }
 
@@ -114,7 +114,7 @@ public class UserController {
         }
         String username = principal.getName();
         User user = userService.findByUsername(username);
-        model.addAttribute("categories", categoryService.findAll());
+        model.addAttribute("categories", categoryService.findAllByStatus(true));
         model.addAttribute("user", user);
         return "views/user/profile";
     }
@@ -134,6 +134,7 @@ public class UserController {
         }
         model.addAttribute("orders", orders);
         model.addAttribute("maps", maps);
+        model.addAttribute("categories",categoryService.findAllByStatus(true));
         return "views/user/order_history";
     }
 }

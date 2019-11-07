@@ -25,17 +25,17 @@
                         <th class="tabledit-toolbar-column">Action</th></tr>
                     </thead>
                     <tbody th:each="team:${teams}">
-                    <tr th:id="${team.id}" id="1">
+                    <tr class="team" th:id="${team.id}" id="1">
                         <td><span class="tabledit-span tabledit-identifier" th:text="${team.id}">1</span><input class="tabledit-input tabledit-identifier" type="hidden" name="ID" value="1" disabled=""></td>
                         <td class="tabledit-view-mode"><span class="tabledit-span" th:text="${team.name}">Bob Williams</span><input class="tabledit-input form-control input-sm" type="text" name="Name" value="Bob Williams" style="display: none;" disabled=""></td>
-                        <td class="tabledit-view-mode">
+                        <td th:class="'tabledit-view-mode ' + 'status'+${team.id}">
                             <span class="badge badge-success py-1 px-2" th:if="${team.status} == true">Active</span>
                             <span class="badge badge-danger py-1 px-2" th:if="${team.status} == false">Inactive</span>
                         </td>
                         <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
                             <div class="btn-group btn-group-sm" style="float: none;">
                                 <a th:href="@{/admin/editTeam(teamId=${team.id})}"><button type="button" class="tabledit-edit-button btn btn-sm btn-default" style="float: none;"><span class="glyphicon glyphicon-pencil"></span></button></a>
-                                <button type="button" class="tabledit-delete-button btn btn-sm btn-default" style="float: none;"><span class="glyphicon glyphicon-trash"></span></button>
+                                <button type="button" class="tabledit-delete-button btn-delete-team btn btn-sm btn-default" style="float: none;"><span class="glyphicon glyphicon-trash"></span></button>
                             </div>
                         </div></td></tr>
                     </tbody>

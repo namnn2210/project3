@@ -7,4 +7,6 @@ import java.util.List;
 public interface OrderService {
     void save(Order order);
     List<Order> findByUserId(int id);
+    List<Order> findAll();
+    Order findById(int id);
 }
