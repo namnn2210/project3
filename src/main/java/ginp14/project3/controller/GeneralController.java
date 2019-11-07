@@ -23,4 +23,9 @@ public class GeneralController {
         model.addAttribute("products", productService.findAllByStatus(true));
         return "views/index";
     }
+
+    @GetMapping("/403")
+    public String showForbidden() {
+        return "views/other/page_error_403";
+    }
 }
