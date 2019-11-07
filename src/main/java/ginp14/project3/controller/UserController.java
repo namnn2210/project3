@@ -43,6 +43,13 @@ public class UserController {
         return "views/user/login";
     }
 
+    @GetMapping("/adminLogin")
+    public String showAdminLogin(Model model) {
+        User user = new User();
+        model.addAttribute("user",user);
+        return "views/admin/login";
+    }
+
     @GetMapping("/register")
     public String showRegister(Model model) {
         User user = new User();
@@ -63,6 +70,11 @@ public class UserController {
             model.addAttribute("emailExist", true);
             return "views/user/register";
         } else {
+            if (user.getRole() == null) {
+                Role role = roleService.findById(1);
+                user.setRole(role);
+            }
+            user.setStatus(true);
             userService.saveUser(user);
         }
         return "redirect:/homepage";

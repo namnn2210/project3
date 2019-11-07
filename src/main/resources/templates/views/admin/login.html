@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js}"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link rel="icon" type="image/png" sizes="16x16" th:href="@{/css/assets/demo/favicon.png}">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Login2</title>
+    <!-- CSS -->
+    <link th:href="@{/css/assets/vendors/material-icons/material-icons.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/assets/vendors/mono-social-icons/monosocialiconsfont.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.4/sweetalert2.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.1.3/mediaelementplayer.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.7.0/css/perfect-scrollbar.min.css}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet" type="text/css">
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/assets/css/style.css}" rel="stylesheet" type="text/css">
+    <!-- Head Libs -->
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js}"></script>
+</head>
+<body class="body-bg-full profile-page  pace-done" style="background-image: url(css/assets/demo/night.jpg)"><div class="pace  pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+    <div class="pace-progress-inner"></div>
+</div>
+    <div class="pace-activity"></div></div>
+<div id="wrapper" class="row wrapper">
+    <div class="col-md-8 text-inverse hidden-xs hidden-sm">
+        <div class="login-left-inner">
+            <div class="login-content">
+                <h3 class="mr-b-20 sub-heading-font-family fw-400">Oscar : Ultimate Admin Template</h3>
+                <p><small>Simple and Flexible Bootstrap Admin Template with 50 plus highly commented and well documented pages. Oscar admin template is powered by HTML5, SASS, Gulp, Bourbon and Bootstrap. Subscribe and get weeky updates.</small>
+                </p>
+            </div>
+            <ul class="list-inline login-links">
+                <li class="list-inline-item"><a href="page-login2.html#">About Us</a>
+                </li>
+                <li class="list-inline-item"><a href="page-login2.html#">Careers</a>
+                </li>
+                <li class="list-inline-item"><a href="page-login2.html#">Terms</a>
+                </li>
+                <li class="list-inline-item"><a href="page-login2.html#">Privacy</a>
+                </li>
+                <li class="list-inline-item"><a href="page-login2.html#">Contact Us</a>
+                </li>
+                <li class="list-inline-item"><a href="page-login2.html#">Twitter</a>
+                </li>
+                <li class="list-inline-item"><a href="page-login2.html#">Facebook</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.login-left-inner -->
+    </div>
+    <!-- /.login-left -->
+    <div class="col-8 ml-auto ml-sm-auto col-sm-6 col-md-4 login-right float-right">
+        <div class="navbar-header text-center">
+            <a href="index.html">
+                <img alt="" src="assets/demo/logo-expand-dark.png">
+            </a>
+        </div>
+        <!-- /.navbar-header -->
+        <form action="#" th:action="@{/admin/login}" class="form-material" method="post">
+            <div class="form-group">
+                <input type="text" placeholder="Username" class="form-control form-control-line" name="username" id="username">
+                <label for="username">Username</label>
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="Password" name="password" id="password" class="form-control form-control-line">
+                <label for="password">Password</label>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-block btn-lg btn-color-scheme ripple" type="submit">Login</button>
+            </div>
+            <!-- /.form-group -->
+        </form>
+        <!-- /.form-material -->
+        <hr>
+        <footer class="col-sm-12 text-center">
+            <hr>
+            <p>Don't have an account? <a href="page-register.html" class="text-primary m-l-5"><b>Sign Up</b></a>
+            </p>
+        </footer>
+    </div>
+    <!-- /.login-right -->
+</div>
+<!-- /.body-container -->
+<!-- Scripts -->
+<script type="text/javascript" th:src="@{http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/css/assets/js/material-design.js}"></script>
+</body>
+</html>

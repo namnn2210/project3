@@ -97,7 +97,7 @@ public class ProductController {
     }
 
     @GetMapping("/category")
-    public String showProductByCategory(@RequestParam int categoryId, @RequestParam boolean status, Model model, @PageableDefault(size = 6) Pageable pageable) {
+    public String showProductByCategory(@RequestParam int categoryId, Model model, @PageableDefault(size = 6) Pageable pageable) {
         model.addAttribute("allProducts", productService.findAllByCategoryIdAndStatus(categoryId,true, pageable));
         model.addAttribute("categories", categoryService.findAllByStatus(true));
         return "views/product/allProducts";

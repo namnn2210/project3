@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $('.btn-delete-team').click(function () {
+        var teamId = $(this).parent().parent().parent().parent().attr('id');
         swal({
             title: 'Are you sure ?',
             text: "Your team will be inactive and all your products in this team will also be inactive!",
@@ -9,7 +10,6 @@ $(document).ready(function () {
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
         }).then(function () {
-            var teamId = $('.team').attr('id');
             var new_text = "";
             $.ajax({
                 method: "post",

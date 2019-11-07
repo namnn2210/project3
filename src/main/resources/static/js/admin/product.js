@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    $('.btn-delete-product').click(function () {
+    $('.glyphicon-trash').click(function (event) {
+        var prodId = $(this).parent().parent().parent().parent().parent().attr('id').replace('item-','');
         swal({
             title: 'Are you sure ?',
             text: "Your product will be inactive!",
@@ -9,7 +10,7 @@ $(document).ready(function () {
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
         }).then(function () {
-            var prodId = $('.product').attr('id');
+            alert(prodId);
             var new_text = "";
             console.log(prodId);
             $.ajax({
@@ -17,15 +18,15 @@ $(document).ready(function () {
                 url: "/products/deleteProduct",
                 contentType: "application/json; charset=utf-8",
                 dataType: 'json',
-                data:prodId,
-                success:function (resp) {
+                data: prodId,
+                success: function (resp) {
                     new_text = '<span class="badge badge-danger py-1 px-2">';
                     new_text += 'Inactive';
                     new_text += '</span>';
-                    $('.status'+prodId).html("");
-                    $('.status'+prodId).append(new_text);
+                    $('.status' + prodId).html("");
+                    $('.status' + prodId).append(new_text);
                 },
-                error:function () {
+                error: function () {
                     swal("error");
                 }
             });
