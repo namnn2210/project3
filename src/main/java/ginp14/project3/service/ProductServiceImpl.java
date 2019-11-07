@@ -43,7 +43,31 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public void save(Product product) {
-        product.setStatus(true);
         productRepository.save(product);
+    }
+
+    @Override
+    public List<Product> findAllByTeamId(int id) {
+        return productRepository.findAllByTeamId(id);
+    }
+
+    @Override
+    public Page<Product> findAllByStatus(boolean status, Pageable pageable) {
+        return productRepository.findAllByStatus(true,pageable);
+    }
+
+    @Override
+    public List<Product> findAllByStatus(boolean status) {
+        return productRepository.findAllByStatus(true);
+    }
+
+    @Override
+    public List<Product> findAllByCategoryIdAndStatus(int id, boolean status) {
+        return productRepository.findAllByCategoryIdAndStatus(id,status);
+    }
+
+    @Override
+    public Page<Product> findAllByCategoryIdAndStatus(int id, boolean status, Pageable pageable) {
+        return productRepository.findAllByCategoryIdAndStatus(id,status,pageable);
     }
 }

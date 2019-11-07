@@ -59,3 +59,7 @@ INSERT INTO product(product_name,product_url,product_price,cat_id,team_id,status
 INSERT INTO product(product_name,product_url,product_price,cat_id,team_id,status) VALUES ('France National Team Print Font','http://aobongda.net/pic/Product/z10161270_636672737923399959_HasThumb.jpg',1,5,12,true);
 INSERT INTO product(product_name,product_url,product_price,cat_id,team_id,status) VALUES ('Brazil National Team Print Font','http://aobongda.net/pic/Product/z10161270_636672735488240676_HasThumb.jpg',1,5,12,true);
 INSERT INTO product(product_name,product_url,product_price,cat_id,team_id,status) VALUES ('Spain National Team Print Font','http://aobongda.net/pic/Product/z10161270_636672732359671732_HasThumb.jpg',1,5,12,true);
+-- --Orders
+INSERT INTO `orders` (`created_at`, `shipping_address`, `shipping_name`, `shipping_phone`, `status`, `total_price`, `updated_at`, `user_id`) VALUES ('2019-11-07 10:56:14', '9B Le Quy Don', 'Ngo Ngoc Nam', '0373924314', 0, 4.5, '2019-11-07 10:56:14', 1);
+-- --Orders Detail
+INSERT INTO `order_detail` (`item_total_price`, `quantity`, `size`, `order_id`, `product_id`) VALUES(7.5, 1, 'XL', 1, 11);

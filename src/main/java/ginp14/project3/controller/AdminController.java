@@ -31,6 +31,13 @@ public class AdminController {
     @Autowired
     private RoleService roleService;
 
+    @Autowired
+    private OrderService orderService;
+
+    @Autowired
+    private OrderDetailService orderDetailService;
+
+
     private List<Category> categories = null;
 
     @GetMapping("/dashboard")
@@ -64,6 +71,21 @@ public class AdminController {
         List<Team> teams = teamService.findAll();
         model.addAttribute("teams", teams);
         return "views/admin/list_teams";
+    }
+
+    @GetMapping("/listOrders")
+    public String showListOrder(Model model) {
+        List<Order> orders = orderService.findAll();
+        model.addAttribute("orders",orders);
+        return "views/admin/list_orders";
+    }
+
+    @GetMapping("/orderDetail")
+    public String showOrderDetail(@RequestParam("orderId") int id, Model model) {
+        List<OrderDetail> orderDetails = orderDetailService.findByOrderId(id);
+        model.addAttribute("orderId",id);
+        model.addAttribute("orderDetails",orderDetails);
+        return "views/admin/order_detail";
     }
 
     @GetMapping("/addProduct")

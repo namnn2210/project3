@@ -9,4 +9,6 @@ import java.util.List;
 public interface OrderRepository extends JpaRepository<Order, Integer> {
     @Query(value = "SELECT o.* FROM orders o where o.user_id = ?1", nativeQuery = true)
     List<Order> findByUserId(int id );
+
+    Order findById(int id);
 }

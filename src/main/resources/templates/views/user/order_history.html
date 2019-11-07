@@ -53,7 +53,10 @@
                                         </tr>
                                     </table>
                                 </td>
-                                <td th:text="${order.status}"></td>
+                                <td>
+                                    <span th:if="${order.status} == true">Done</span>
+                                    <span th:if="${order.status} == false">Pending</span>
+                                </td>
                             </tr>
                             </tbody>
                         </table>

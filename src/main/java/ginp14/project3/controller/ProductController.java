@@ -46,7 +46,7 @@ public class ProductController {
             model.addAttribute("categories",categories);
             return "views/admin/add_product";
         }
-        else if(product.getUrl() == null) {
+        else if(product.getUrl() == null || product.getUrl().equals("")) {
             if(file.isEmpty()) {
                 model.addAttribute("message","No file uploaded. Product must have an image");
                 List<Category> categories = categoryService.findAll();
@@ -59,6 +59,7 @@ public class ProductController {
                 Map uploadResult = cloudinary.upload(file.getBytes(), ObjectUtils.asMap("resourcetype", "auto"));
                 String url = uploadResult.get("url").toString();
                 product.setUrl(url);
+                product.setStatus(true);
                 productService.save(product);
             } catch (IOException e){
                 e.printStackTrace();
@@ -71,10 +72,18 @@ public class ProductController {
         return "redirect:/admin/listProducts";
     }
 
+    @PostMapping("/deleteProduct")
+    public @ResponseBody String deleteProduct(@RequestBody int prodId) {
+        Product product = productService.findById(prodId);
+        product.setStatus(false);
+        productService.save(product);
+        return "false";
+    }
+
     @GetMapping("/all")
     public String showAllProducts(Model model, @PageableDefault(size = 6) Pageable pageable) {
-        model.addAttribute("allProducts", productService.findAll(pageable));
-        model.addAttribute("categories", categoryService.findAll());
+        model.addAttribute("allProducts", productService.findAllByStatus(true,pageable));
+        model.addAttribute("categories", categoryService.findAllByStatus(true));
         return "views/product/allProducts";
     }
 
@@ -82,15 +91,15 @@ public class ProductController {
     public String showProductDetail(@RequestParam int productId, Model model) {
         Product product = productService.findById(productId);
         model.addAttribute("product", product);
-        model.addAttribute("products", productService.findAllByCategoryId(product.getCategory().getId()));
-        model.addAttribute("categories", categoryService.findAll());
+        model.addAttribute("products", productService.findAllByCategoryIdAndStatus(product.getCategory().getId(),true));
+        model.addAttribute("categories", categoryService.findAllByStatus(true));
         return "views/product/product_detail";
     }
 
     @GetMapping("/category")
-    public String showProductByCategory(@RequestParam int categoryId, Model model, @PageableDefault(size = 6) Pageable pageable) {
-        model.addAttribute("allProducts", productService.findAllByCategoryId(categoryId, pageable));
-        model.addAttribute("categories", categoryService.findAll());
+    public String showProductByCategory(@RequestParam int categoryId, @RequestParam boolean status, Model model, @PageableDefault(size = 6) Pageable pageable) {
+        model.addAttribute("allProducts", productService.findAllByCategoryIdAndStatus(categoryId,true, pageable));
+        model.addAttribute("categories", categoryService.findAllByStatus(true));
         return "views/product/allProducts";
     }
 

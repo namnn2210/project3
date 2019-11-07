@@ -13,4 +13,9 @@ public interface ProductService {
     List<Product> findAllByCategoryId(int id);
     Page<Product> findAllByCategoryId(int id, Pageable pageable);
     void save(Product product);
+    List<Product> findAllByTeamId(int id);
+    Page<Product> findAllByStatus(boolean status, Pageable pageable);
+    List<Product> findAllByStatus(boolean status);
+    List<Product> findAllByCategoryIdAndStatus(int id, boolean status);
+    Page<Product> findAllByCategoryIdAndStatus(int id, boolean status, Pageable pageable);
 }
