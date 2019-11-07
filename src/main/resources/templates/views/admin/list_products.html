@@ -8,58 +8,101 @@
     <title>Title</title>
 </head>
 <body>
-    <div layout:fragment="content" class="container-fluid">
-        <div class="col-md-12 widget-holder">
-            <div class="widget-bg">
-                <div class="widget-heading clearfix">
-                    <h5>List Products</h5>
-                </div>
-                <!-- /.widget-heading -->
-                <div class="widget-body clearfix">
-                    <table class="table table-editable">
-                        <thead>
-                        <tr>
-                            <th data-identifier="">ID</th>
-                            <th data-editable="">Product Name</th>
-                            <th data-editable="">Product Price</th>
-                            <th data-editable="">Category</th>
-                            <th data-editable="">Team</th>
-                            <th data-editable="">Product Image</th>
-                            <th data-editable="">Created at</th>
-                            <th data-editable="">Status</th>
-                            <th class="tabledit-toolbar-column">Action</th></tr>
-                        </thead>
-                        <tbody th:each="product:${products}">
-                        <tr class="product" th:id="${product.id}" id="1">
-                            <td><span class="tabledit-span tabledit-identifier" th:text="${product.id}">1</span><input class="tabledit-input tabledit-identifier" type="hidden" name="ID" value="1" disabled=""></td>
-                            <td class="tabledit-view-mode"><span class="tabledit-span" th:text="${product.name}">Bob Williams</span><input class="tabledit-input form-control input-sm" type="text" name="Name" value="Bob Williams" style="display: none;" disabled=""></td>
-                            <td class="tabledit-view-mode"><span class="tabledit-span" th:text="'$' + ${product.price}">$23,566</span><input class="tabledit-input form-control input-sm" type="text" name="Salary" value="$23,566" style="display: none;" disabled=""></td>
-                            <td class="tabledit-view-mode"><span class="tabledit-span" th:text="${product.category.name}">$23,566</span></td>
-                            <td class="tabledit-view-mode"><span class="tabledit-span" th:text="${product.team.name}">$23,566</span></td>
-                            <td class="tabledit-view-mode">
-                                <img class="tabledit-span" width="15%" th:src="${product.url}" alt="product_img"/>
-                            </td>
-                            <td class="tabledit-view-mode">
-                                <span class="tabledit-span" th:if="${product.created_at} != null" th:text="${product.created_at}"></span>
-                                <span class="tabledit-span" th:if="${product.created_at} == null">NULL</span>
-                            </td>
-                            <td th:class="'tabledit-view-mode ' + 'status'+${product.id}">
-                                <span class="badge badge-success py-1 px-2" th:if="${product.status} == true">Active</span>
-                                <span class="badge badge-danger py-1 px-2" th:if="${product.status} == false">Inactive</span>
-                            </td>
-                            <td style="white-space: nowrap; width: 1%;"><div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
-                                <div class="btn-group btn-group-sm" style="float: none;">
-                                    <a th:href="@{/admin/editProduct(productId=${product.id})}"><button type="button" class="tabledit-edit-button btn btn-sm btn-default" style="float: none;"><span class="glyphicon glyphicon-pencil"></span></button></a>
-                                    <button type="button" class="tabledit-delete-button btn-delete-product btn btn-sm btn-default" style="float: none;"><span class="glyphicon glyphicon-trash"></span></button>
-                                </div>
-                            </div></td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <!-- /.widget-body -->
+<div layout:fragment="content" class="container-fluid">
+    <div class="col-md-12 widget-holder">
+        <div class="widget-bg">
+            <div class="widget-heading clearfix">
+                <h5>List Products</h5>
             </div>
-            <!-- /.widget-bg -->
+            <!-- /.widget-heading -->
+            <div class="widget-body clearfix">
+                <table class="table table-editable">
+                    <thead>
+                    <tr>
+                        <th data-identifier="">ID</th>
+                        <th data-editable="">Product Name</th>
+                        <th data-editable="">Product Price</th>
+                        <th data-editable="">Category</th>
+                        <th data-editable="">Team</th>
+                        <th data-editable="">Product Image</th>
+                        <th data-editable="">Created at</th>
+                        <th data-editable="">Status</th>
+                        <th class="tabledit-toolbar-column">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody th:each="product:${products}">
+                    <tr class="product" th:id="'item-'+${product.id}">
+                        <td><span class="tabledit-span tabledit-identifier" th:text="${product.id}">1</span><input
+                                class="tabledit-input tabledit-identifier" type="hidden" name="ID" value="1"
+                                disabled=""></td>
+                        <td class="tabledit-view-mode"><span class="tabledit-span" th:text="${product.name}">Bob Williams</span><input
+                                class="tabledit-input form-control input-sm" type="text" name="Name"
+                                value="Bob Williams" style="display: none;" disabled=""></td>
+                        <td class="tabledit-view-mode"><span class="tabledit-span" th:text="'$' + ${product.price}">$23,566</span><input
+                                class="tabledit-input form-control input-sm" type="text" name="Salary" value="$23,566"
+                                style="display: none;" disabled=""></td>
+                        <td class="tabledit-view-mode"><span class="tabledit-span" th:text="${product.category.name}">$23,566</span>
+                        </td>
+                        <td class="tabledit-view-mode"><span class="tabledit-span" th:text="${product.team.name}">$23,566</span>
+                        </td>
+                        <td class="tabledit-view-mode">
+                            <img class="tabledit-span" width="15%" th:src="${product.url}" alt="product_img"/>
+                        </td>
+                        <td class="tabledit-view-mode">
+                            <span class="tabledit-span" th:if="${product.created_at} != null"
+                                  th:text="${product.created_at}"></span>
+                            <span class="tabledit-span" th:if="${product.created_at} == null">NULL</span>
+                        </td>
+                        <td th:class="'tabledit-view-mode ' + 'status'+${product.id}">
+                            <span class="badge badge-success py-1 px-2" th:if="${product.status} == true">Active</span>
+                            <span class="badge badge-danger py-1 px-2"
+                                  th:if="${product.status} == false">Inactive</span>
+                        </td>
+                        <td style="white-space: nowrap; width: 1%;">
+                            <div class="tabledit-toolbar btn-toolbar" style="text-align: left;">
+                                <div class="btn-group btn-group-sm" style="float: none;">
+                                    <a th:href="@{/admin/editProduct(productId=${product.id})}">
+                                        <button type="button" class="tabledit-edit-button btn btn-sm btn-default"
+                                                style="float: none;"><span class="glyphicon glyphicon-pencil"></span>
+                                        </button>
+                                    </a>
+                                    <button type="button" th:id="${product.id}"
+                                            class="tabledit-delete-button btn-delete-product btn btn-sm btn-default"
+                                            style="float: none;"><span class="glyphicon glyphicon-trash"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.widget-body -->
         </div>
+        <!-- /.widget-bg -->
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li th:if="${products.hasPrevious()}" class="page-item"><a class="page-link"
+                                                                           th:href="@{/admin/listProducts(page=${products.number-1})}"
+                                                                           aria-label="Previous"><span
+                        aria-hidden="true"><i class="material-icons">arrow_back</i></span></a>
+                </li>
+                <th:block th:each="i:${#numbers.sequence(0,products.totalPages-1)}">
+                    <li th:if="${products.number == i}" class="page-item active"><a class="page-link"
+                                                                                    th:href="@{/admin/listProducts(page=${i})}">[[${i}+1]]</a>
+                    </li>
+                    <li th:unless="${products.number == i}" class="page-item"><a class="page-link"
+                                                                                 th:href="@{/admin/listProducts(page=${i})}">[[${i}+1]]</a>
+                    </li>
+                </th:block>
+                <li th:if="${products.hasNext()}" class="page-item"><a class="page-link"
+                                                                       th:href="@{/admin/listProducts(page=${products.number+1})}"
+                                                                       aria-label="Next"><span aria-hidden="true"><i
+                        class="material-icons">arrow_forward</i></span></a>
+                </li>
+            </ul>
+        </nav>
     </div>
+</div>
 </body>
 </html>

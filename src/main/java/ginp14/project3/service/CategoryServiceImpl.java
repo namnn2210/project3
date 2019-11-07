@@ -39,4 +39,9 @@ public class CategoryServiceImpl implements CategoryService{
     public Page<Category> findAllByStatus(boolean status, Pageable pageable) {
         return categoryRepository.findAllByStatus(true,pageable);
     }
+
+    @Override
+    public Page<Category> findAll(Pageable pageable) {
+        return categoryRepository.findAll(pageable);
+    }
 }

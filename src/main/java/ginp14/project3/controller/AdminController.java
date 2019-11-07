@@ -4,6 +4,8 @@ import com.sun.org.apache.xpath.internal.operations.Mod;
 import ginp14.project3.model.*;
 import ginp14.project3.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,23 +55,20 @@ public class AdminController {
     }
 
     @GetMapping("/listProducts")
-    public String showListProducts(Model model) {
-        List<Product> products = productService.findAll();
-        model.addAttribute("products", products);
+    public String showListProducts(Model model, @PageableDefault(size = 10) Pageable pageable) {
+        model.addAttribute("products", productService.findAll(pageable));
         return "views/admin/list_products";
     }
 
     @GetMapping("/listCategories")
-    public String showListCategories(Model model) {
-        categories = categoryService.findAll();
-        model.addAttribute("categories", categories);
+    public String showListCategories(Model model, @PageableDefault(size = 5) Pageable pageable) {
+        model.addAttribute("categories", categoryService.findAll(pageable));
         return "views/admin/list_categories";
     }
 
     @GetMapping("/listTeams")
-    public String showListTeams(Model model) {
-        List<Team> teams = teamService.findAll();
-        model.addAttribute("teams", teams);
+    public String showListTeams(Model model, @PageableDefault(size = 5) Pageable pageable){
+        model.addAttribute("teams", teamService.findAll(pageable));
         return "views/admin/list_teams";
     }
 
@@ -91,10 +90,8 @@ public class AdminController {
     @GetMapping("/addProduct")
     public String showAddProductForm(Model model) {
         Product product = new Product();
-        List<Team> teams = teamService.findAll();
-        categories = categoryService.findAll();
-        model.addAttribute("teams", teams);
-        model.addAttribute("categories", categories);
+        model.addAttribute("teams", teamService.findAll());
+        model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("product", product);
         return "views/admin/add_product";
     }

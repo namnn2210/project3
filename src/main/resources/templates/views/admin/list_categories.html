@@ -46,6 +46,18 @@
                 <!-- /.widget-body -->
             </div>
             <!-- /.widget-bg -->
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li th:if="${categories.hasPrevious()}" class="page-item"><a class="page-link" th:href="@{/admin/listCategories(page=${categories.number-1})}" aria-label="Previous"><span aria-hidden="true"><i class="material-icons">arrow_back</i></span></a>
+                    </li>
+                    <th:block th:each="i:${#numbers.sequence(0,categories.totalPages-1)}">
+                        <li th:if="${categories.number == i}" class="page-item active"><a class="page-link" th:href="@{/admin/listCategories(page=${i})}">[[${i}+1]]</a></li>
+                        <li th:unless="${categories.number == i}" class="page-item"><a class="page-link" th:href="@{/admin/listCategories(page=${i})}">[[${i}+1]]</a></li>
+                    </th:block>
+                    <li th:if="${categories.hasNext()}" class="page-item"><a class="page-link" th:href="@{/admin/listCategories(page=${categories.number+1})}" aria-label="Next"><span aria-hidden="true"><i class="material-icons">arrow_forward</i></span></a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 </body>

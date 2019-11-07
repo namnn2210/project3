@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $('.btn-confirm').click(function () {
+        var orderId = $(this).parent().parent().parent().parent().attr('id');
         swal({
             title: 'Are you sure ?',
             text: "Your order will be confirmed!",
@@ -9,7 +10,6 @@ $(document).ready(function () {
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes'
         }).then(function () {
-            var orderId = $('.order').attr('id');
             var new_text = "";
             $.ajax({
                 method: "post",
@@ -23,8 +23,8 @@ $(document).ready(function () {
                     new_text += '</span>';
                     $('.status'+orderId).html("");
                     $('.status'+orderId).append(new_text);
-                    $('.btn-confirm').remove();
-                    $('.btn-edit').remove();
+                    $('.confirm-item-'+orderId).remove();
+                    $('.edit-item-'+orderId).remove();
                 },
                 error:function () {
                     swal("error");
