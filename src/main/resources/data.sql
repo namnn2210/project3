@@ -5,7 +5,7 @@ INSERT INTO role(role_name) VALUES ('ADMIN');
 
 --User Table Data
 INSERT INTO `user` ( `address`, `created_at`, `dob`, `email`, `full_name`, `gender`, `password`, `phone`, `status`, `updated_at`, `username`, `role_id`) VALUES
-('9B Le Quy Don', '2019-10-31 10:33:51', '1997-10-22', 'nam@gmailcom', 'Ngo Ngoc Nam', 2, '$2a$10$JrfQrN9sNr1nqJ7qFt55oOPjHcLIztzr2px6yLpeNrL1GGuNMVcHS', '0373924314', 1, '2019-10-31 10:33:51', 'namngocngo22', 1);
+('9B Le Quy Don', '2019-10-31 10:33:51', '1997-10-22', 'ngongocnam22101997@gmail.com', 'Ngo Ngoc Nam', 2, '$2a$10$JrfQrN9sNr1nqJ7qFt55oOPjHcLIztzr2px6yLpeNrL1GGuNMVcHS', '0373924314', 1, '2019-10-31 10:33:51', 'namngocngo22', 1);
 INSERT INTO `user` (`address`, `created_at`, `dob`, `email`, `full_name`, `gender`, `password`, `phone`, `status`, `updated_at`, `username`, `role_id`) VALUES
 ('Kim Nguu', '2019-11-07 22:03:06', '1997-02-09', 'admin@gmail.com', 'Admin Test', 1, '$2a$10$Pr7QEv8IzkeZbd2HMBJ1oO0mOmpxNwf33HLXsSbrVwONg2Xrep/iq', '0962266324', 1, '2019-11-07 22:03:06', 'admin', 3);
 

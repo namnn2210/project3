@@ -5,11 +5,106 @@
       layout:decorate="~{fragments/master_layout}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Order Confirmation</title>
 </head>
 <body>
-    <div layout:fragment="content">
-        Order done
+<div layout:fragment="content">
+    <div class="widget-list container" style="margin-top:5%">
+        <div class="row">
+            <div class="col-md-12 widget-holder">
+                <div class="widget-bg">
+                    <div class="widget-body clearfix">
+                        <div class="ecommerce-invoice">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h3>Invoice</h3>
+                                </div>
+                                <div class="col-md-6 text-right text-muted">
+                                    <span th:text="${order.shippingName}">Lisa Doe</span>
+                                    <br>
+                                    <span th:text="${order.shippingAddress}">PO Box 21177</span>
+                                    <br>
+                                    <span  th:text="${order.shippingPhone}">MELBOURNE VIC 8011</span>
+                                    <br>Vietnam
+                                </div>
+                            </div>
+                            <!-- /.row -->
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-6 text-muted">
+                                    <h6 class="mr-t-0"><strong>Invoice To</strong></h6><span th:text="${order.shippingName}">Lisa Doe</span>
+                                    <br>
+                                    <span th:text="${order.shippingAddress}">PO Box 21177</span>
+                                    <br>
+                                    <span  th:text="${order.shippingPhone}">MELBOURNE VIC 8011</span>
+                                    <br>Vietnam
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <h6 class="mr-t-0"><strong>Details:</strong></h6><strong>Date:</strong> <span
+                                        class="text-muted" th:text="${order.created_at}">August 10, 2014</span>
+                                    <br><strong>ID:</strong> <span class="text-muted" th:text="${order.id}">1357995</span>
+                                    <br><strong>Amount Due:</strong> <span class="text-muted" th:text="${order.totalPrice}">$ 3040</span>
+                                </div>
+                            </div>
+                            <!-- /.row -->
+                            <hr class="border-0">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                <tr class="bg-color-scheme-dark">
+                                    <th>Product</th>
+                                    <th class="text-center">Unit Cost</th>
+                                    <th class="text-center">Quantity</th>
+                                    <th class="text-center">Size</th>
+                                    <th class="text-center">Total</th>
+                                </tr>
+                                </thead>
+                                <tbody th:each="cartItem:${cartItems}">
+                                <tr>
+                                    <td th:text="${cartItem.product.name}">Product One</td>
+                                    <td th:text="'$'+${cartItem.product.price}" class="text-center">100</td>
+                                    <td th:text="${cartItem.quantity}" class="text-center">100</td>
+                                    <td th:text="${cartItem.size}" class="text-center">1</td>
+                                    <td th:text="${cartItem.product.price * cartItem.quantity}" class="text-center">
+                                        100
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Thanks for your business</p>
+                                    <ul class="text-muted small">
+                                        <li>Aeserunt tenetur cum nihil repudiandae perferendis fuga vitae corporis!</li>
+                                        <li>Laborum, necessitatibus recusandae ullam at iusto dolore.</li>
+                                        <li>Voluptatum aperiam voluptates quasi!</li>
+                                        <li>Assumenda, iusto, consequuntur corporis atque culpa saepe magnam
+                                            recusandae
+                                        </li>
+                                        <li>Possimus odio ipsam magni sint reiciendis unde amet</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4 invoice-sum text-right">
+                                    <ul class="list-unstyled">
+                                        <li th:text="'Sub - Total amount: $'+${order.totalPrice}"> 2740</li>
+                                        <li>Discount: -----</li>
+                                        <li>Tax: 0</li>
+                                        <li><strong th:text="'Grand Total: $'+${order.totalPrice}"> 3040</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.ecommerce-invoice -->
+                    </div>
+                    <!-- /.widget-body -->
+                </div>
+                <!-- /.widget-bg -->
+            </div>
+            <!-- /.widget-holder -->
+        </div>
+        <!-- /.row -->
     </div>
+</div>
 </body>
 </html>
