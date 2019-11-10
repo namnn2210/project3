@@ -1,9 +1,6 @@
 package ginp14.project3.controller;
 
-import ginp14.project3.model.Order;
-import ginp14.project3.model.OrderDetail;
-import ginp14.project3.model.Role;
-import ginp14.project3.model.User;
+import ginp14.project3.model.*;
 import ginp14.project3.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.thymeleaf.context.Context;
 
+import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.util.HashMap;
@@ -34,6 +34,12 @@ public class UserController {
 
     @Autowired
     private RoleService roleService;
+
+    @Autowired
+    private ConfirmationTokenService confirmationTokenService;
+
+    @Autowired
+    private EmailService emailService;
 
     @GetMapping("/login")
     public String showLogin(Model model) {
@@ -59,7 +65,7 @@ public class UserController {
     }
 
     @PostMapping("/userRegisterProcess")
-    public String userRegisterProcess(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
+    public String userRegisterProcess(@Valid @ModelAttribute("user") User user, BindingResult result, Model model, HttpServletRequest request) {
         if (result.hasErrors()) {
             return "views/user/register";
         }
@@ -74,10 +80,21 @@ public class UserController {
                 Role role = roleService.findById(1);
                 user.setRole(role);
             }
-            user.setStatus(true);
             userService.saveUser(user);
+            ConfirmationToken confirmationToken = new ConfirmationToken(user);
+            confirmationTokenService.save(confirmationToken);
+            try {
+                String subject = "KitStore Registration Confirmation";
+                String templateFileName = "views/user/confirm";
+                Context context = new Context();
+                context.setVariable("token",confirmationToken.getConfirmationToken());
+                emailService.sendEmail(user.getEmail(),subject,templateFileName,context);
+            }
+            catch (MessagingException ex) {
+                ex.printStackTrace();
+            }
         }
-        return "redirect:/homepage";
+        return "redirect:/registerSuccess";
     }
 
     @PostMapping("/addUser")
@@ -148,5 +165,32 @@ public class UserController {
         model.addAttribute("maps", maps);
         model.addAttribute("categories",categoryService.findAllByStatus(true));
         return "views/user/order_history";
+    }
+
+    @PostMapping("/confirmAccount")
+    public String showConfirmAccountPage(@RequestParam String token, Model model) {
+        ConfirmationToken confirmToken = confirmationTokenService.findByConfirmationToken(token);
+        if (token != null) {
+            User user = userService.findByUsername(confirmToken.getUser().getUsername());
+            user.setStatus(true);
+            userService.saveUser(user);
+        }
+        else {
+            model.addAttribute("error",true);
+            return "views/other/register_success";
+        }
+        return "redirect:/homepage";
+    }
+
+    @GetMapping("/verifyError")
+    public String showVerifyErrorForm(Model model) {
+        model.addAttribute("categories",categoryService.findAllByStatus(true));
+        return "views/other/verify_error";
+    }
+
+    @GetMapping("/registerSuccess")
+    public String showSuccessForm(Model model) {
+        model.addAttribute("categories",categoryService.findAllByStatus(true));
+        return "views/other/register_success";
     }
 }

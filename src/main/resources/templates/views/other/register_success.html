@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" ee7460ee-14b9-4d11-8226-e38d32d7d1bf
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/master_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content" >
+    <div class="container" style="margin-top: 5%;margin-bottom: 5%; color:black">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Thanks for registering!</h2>
+                <p>Please enter your confirmation code you received in your email</p>
+                <form class="form-horizontal" role="form" th:action="@{/confirmAccount}" method="post">
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <input class="form-control" type="text" placeholder="Confirmation Code" name="token">
+                        </div>
+                        <p th:if="${error}" class="text text-danger">Please enter your confirmation code</p>
+                        <div class="col-md-4">
+                            <input class="btn btn-primary btn-block" type="submit" value="Verify">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

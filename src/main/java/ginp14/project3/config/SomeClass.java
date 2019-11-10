@@ -15,14 +15,10 @@ public class SomeClass
     @Autowired
     private TemplateEngine templateEngine;
 
-    public String generateMailHtml(String text)
+    public String generateMailHtml(String text, String templateFileName, Context context)
     {
-        Map<String, Object> variables = new HashMap<>();
-        variables.put("mailtext", text);
-
-        final String templateFileName = "views/order/email_confirmation"; //Name of the template file without extension
-        String output = this.templateEngine.process(templateFileName, new Context(Locale.getDefault(), variables));
-
+        //Name of the template file without extension
+        String output = this.templateEngine.process(templateFileName, context);
         return output;
     }
 }
