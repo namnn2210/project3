@@ -13,7 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
+import javax.validation.constraints.Email;
+import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
 
@@ -37,6 +40,9 @@ public class CartController {
 
     @Autowired
     HttpSession session;
+
+    @Autowired
+    private EmailService emailService;
 
     private static final String SUCCESS_URL = "/cart/checkout/success";
     private static final String CANCEL_URL = "/cart/checkout/cancel";
@@ -92,7 +98,7 @@ public class CartController {
     }
 
     @GetMapping("/checkout")
-    public String checkout(Principal principal) {
+    public String checkout(Principal principal, Model model) {
         ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
         List<CartItem> cartItems = cart.getCartItem();
         String username = principal.getName();
@@ -113,8 +119,20 @@ public class CartController {
             orderDetail.setItemTotalPrice(item.getQuantity() * item.getProduct().getPrice());
             orderDetailService.save(orderDetail);
         }
+        //Send order confirmation
+        try {
+            String subject = "KitStore Order Confirmation";
+            String text = "KitStore Order Confirmation";
+            emailService.sendEmail(user.getEmail(),subject);
+        }
+        catch (MessagingException ex) {
+            ex.printStackTrace();
+        }
+        model.addAttribute("user",user);
+        model.addAttribute("order",order);
+        model.addAttribute("cartItems",cartItems);
         session.removeAttribute("cart");
-        return "redirect:/homepage";
+        return "views/order/order_confirmation";
     }
 
     @PostMapping("/pay")
