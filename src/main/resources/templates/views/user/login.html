@@ -18,7 +18,7 @@
                     <img th:src="@{/images/logo.png}" id="icon" alt="User Icon" />
                 </div>
                 <div th:if="${param.error}" class="text text-danger">
-                    Invalid username or password
+                    Invalid username or password or your account is not activated.
                 </div>
                 <div th:if="${param.logout}">
                     <div class="alert alert-info">

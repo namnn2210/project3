@@ -4,6 +4,7 @@ import ginp14.project3.config.SomeClass;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.context.Context;
 
 import javax.mail.*;
 import javax.mail.internet.MimeMessage;
@@ -19,7 +20,7 @@ public class EmailServiceImpl implements EmailService {
     final String password = "bjkxoyabqyqmrpat";
 
     @Override
-    public void sendEmail(String email, String subject) throws MessagingException {
+    public void sendEmail(String email, String subject, String templateFileName,Context context) throws MessagingException {
         Properties prop = new Properties();
         prop.put("mail.smtp.host", "smtp.gmail.com");
         prop.put("mail.smtp.port", "465");
@@ -35,10 +36,9 @@ public class EmailServiceImpl implements EmailService {
 
         MimeMessage message = new MimeMessage(session);
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
-
         helper.setTo(email);
         helper.setSubject(subject);
-        helper.setText(someClass.generateMailHtml("Hi There"), true);
+        helper.setText(someClass.generateMailHtml("Hi There",templateFileName, context), true);
         Transport.send(message);
     }
 }
