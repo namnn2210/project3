@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/admin/master_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div layout:fragment="content" class="container-fluid" style="margin-top: 3%">
+        <div class="row">
+            <!--Total Products-->
+            <div class="col-lg-3 col-sm-6 widget-holder">
+                <div class="widget-bg">
+                    <div class="widget-body clearfix"><span class="text-muted text-uppercase h6 fw-700">Total Products</span>
+                        <section class="mb-5">
+                            <h3 class="m-0 sub-heading-font-family fw-300 total-products float-left">83%</h3>
+                        </section>
+                        <div class="clearfix">
+                            <div class="sparklineChart" id="sparklinedash"><canvas width="181" height="50" style="display: inline-block; width: 181.031px; height: 50px; vertical-align: top;"></canvas></div>
+                        </div>
+                    </div>
+                    <!-- /.widget-body -->
+                </div>
+                <!-- /.widget-bg -->
+            </div>
+            <!--Active Products-->
+            <div class="col-lg-3 col-sm-6 widget-holder">
+                <div class="widget-bg">
+                    <div class="widget-body clearfix"><span class="text-muted text-uppercase h6 fw-700">Active Products</span>
+                        <section class="mb-5">
+                            <h3 class="m-0 sub-heading-font-family active-products fw-300 float-left">36%</h3>
+                        </section>
+                        <div class="clearfix">
+                            <div class="sparklineChart" id="sparklinedash2"><canvas width="181" height="50" style="display: inline-block; width: 181.031px; height: 50px; vertical-align: top;"></canvas></div>
+                        </div>
+                    </div>
+                    <!-- /.widget-body -->
+                </div>
+                <!-- /.widget-bg -->
+            </div>
+            <!--Defective Products-->
+            <div class="col-lg-3 col-sm-6 widget-holder">
+                <div class="widget-bg">
+                    <div class="widget-body clearfix"><span class="text-muted text-uppercase h6 fw-700">Defective Products</span>
+                        <section class="mb-5">
+                            <h3 class="m-0 sub-heading-font-family defective-products fw-300 float-left">42%</h3>
+                        </section>
+                        <div class="clearfix">
+                            <div class="sparklineChart" id="sparklinedash3"><canvas width="181" height="50" style="display: inline-block; width: 181.031px; height: 50px; vertical-align: top;"></canvas></div>
+                        </div>
+                    </div>
+                    <!-- /.widget-body -->
+                </div>
+                <!-- /.widget-bg -->
+            </div>
+            <!--Total Products-->
+            <div class="col-lg-3 col-sm-6 widget-holder">
+                <div class="widget-bg">
+                    <div class="widget-body clearfix"><span class="text-muted text-uppercase h6 fw-700">Total Sales</span>
+                        <section class="mb-5">
+                            <h3 class="m-0 sub-heading-font-family total-sales fw-300 float-left">56%</h3>
+                        </section>
+                        <div class="clearfix">
+                            <div class="sparklineChart" id="sparklinedash4"><canvas width="181" height="50" style="display: inline-block; width: 181.031px; height: 50px; vertical-align: top;"></canvas></div>
+                        </div>
+                    </div>
+                    <!-- /.widget-body -->
+                </div>
+                <!-- /.widget-bg -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 widget-holder">
+                <div class="widget-bg">
+                    <div class="widget-body clearfix">
+                        <h5 class="box-title">Order Status</h5>
+                        <div id="piechart"></div>
+                    </div>
+                    <!-- /.widget-body -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

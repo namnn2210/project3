@@ -11,9 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.security.Principal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/admin")
@@ -45,7 +48,7 @@ public class AdminController {
 
     @GetMapping("/dashboard")
     public String showDashboard() {
-        return "fragments/admin/master_layout";
+        return "views/admin/dashboard";
     }
 
     @GetMapping("/listUsers")
@@ -152,5 +155,53 @@ public class AdminController {
         Team team = teamService.findById(id);
         model.addAttribute("team", team);
         return "views/admin/add_team";
+    }
+
+    @GetMapping("/addOrder")
+    public String showAddOrderForm(Model model) {
+        Order order = new Order();
+        OrderDetail orderDetail = new OrderDetail();
+        List<Product> products = productService.findAllByStatus(true);
+        model.addAttribute("order",order);
+        model.addAttribute("orderDetail",orderDetail);
+        model.addAttribute("products",products);
+        return "views/admin/add_order";
+    }
+
+    @GetMapping("/getTotalProducts")
+    public @ResponseBody int getTotalProducts(){
+        List<Product> products = productService.findAll();
+        int size = products.size();
+        return size;
+    }
+
+    @GetMapping("/getStatusProducts")
+    public @ResponseBody
+    Map<String,Integer> getActiveProducts(){
+        List<Product> activeProducts = productService.findAllByStatus(true);
+        Map<String,Integer> statusProducts = new HashMap<>();
+        statusProducts.put("active",activeProducts.size());
+        statusProducts.put("defective",productService.findAll().size()-activeProducts.size());
+        return statusProducts;
+    }
+
+    @GetMapping("/getTotalSales")
+    public @ResponseBody double getTotalSales() {
+        List<Order> orders = orderService.findAll();
+        double totalSales = 0.0;
+        for (Order order: orders) {
+            totalSales += order.getTotalPrice();
+        }
+        return totalSales;
+    }
+
+    @GetMapping("/getStatusOrders")
+    public @ResponseBody Map<String,Integer> getStatusOrders() {
+        List<Order> confirmedOrders = orderService.findAllByStatus(true);
+        List<Order> pendingOrders = orderService.findAllByStatus(false);
+        Map<String, Integer> statusOrders = new HashMap<>();
+        statusOrders.put("confirmed",confirmedOrders.size());
+        statusOrders.put("pending",pendingOrders.size());
+        return statusOrders;
     }
 }

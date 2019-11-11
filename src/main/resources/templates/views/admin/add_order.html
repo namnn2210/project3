@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/admin/master_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content" class="container-fluid">
+    <div class="col-md-12 widget-holder">
+        <div class="widget-bg">
+            <div class="widget-body clearfix">
+                <h5 class="box-title mr-b-0">Add new order</h5>
+                <p class="text-muted">Add a new order for your store</p>
+                <form class="order" method="post" th:object="${order}" th:action="@{/addOrder}">
+                    <input type="hidden" th:field="*{id}">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="name">Shipping Name</label>
+                                <input th:field="*{shippingName}" class="form-control" id="name"
+                                       placeholder="Shipping Name"
+                                       type="text">
+                                <div class="text text-danger" th:if="${#fields.hasErrors('shippingName')}"
+                                     th:errors="*{shippingName}"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="address">Shipping Address</label>
+                                <div class="input-group">
+                                    <input class="form-control" id="address" placeholder="Shipping Address"
+                                           th:field="*{shippingAddress}"
+                                           type="text">
+                                </div>
+                                <div class="text text-danger" th:if="${#fields.hasErrors('shippingAddress')}"
+                                     th:errors="*{shippingAddress}"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="phone">Shipping Phone</label>
+                                <input th:field="*{shippingPhone}" class="form-control" id="phone"
+                                       placeholder="Shipping Phone"
+                                       type="text" maxlength="10">
+                                <div class="text text-danger" th:if="${#fields.hasErrors('shippingPhone')}"
+                                     th:errors="*{shippingPhone}"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row class-order-detail">
+                        <div th:object="${orderDetail}" class="col-lg-12 order-detail">
+                            <table class="table table-editable">
+                                <thead>
+                                <tr>
+                                    <th data-identifier="">Product</th>
+                                    <th data-editable="">Quantity</th>
+                                    <th data-editable="">Size</th>
+                                    <th data-editable="">Price</th>
+                                    <th data-editable=""><i class="material-icons btn-add-product">add</i></th>
+                                </thead>
+                                <tbody>
+                                <tr class="order-detail-1">
+                                    <td>
+                                        <select th:field="*{product}" class="form-control selectpicker"
+                                                tabindex="-98">
+                                            <th:block th:each="product:${products}">
+                                                <option th:value="${product.id}" th:text="${product.name}">Mustard
+                                                </option>
+                                            </th:block>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select th:field="*{size}" class="form-control selectpicker"
+                                                tabindex="-98">
+                                            <option value="S">S</option>
+                                            <option value="M">M</option>
+                                            <option value="L">L</option>
+                                            <option value="XL">XL</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input class="form-control" type="number" th:field="*{quantity}"/>
+                                    </td>
+                                    <td>
+                                        <span></span>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="form-actions btn-list">
+                        <button class="btn btn-primary" type="submit">Save</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.widget-body -->
+        </div>
+        <!-- /.widget-bg -->
+    </div>
+</div>
+</body>
+</html>

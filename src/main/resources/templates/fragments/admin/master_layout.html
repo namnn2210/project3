@@ -12,254 +12,367 @@
     <!-- CSS -->
     <link th:href="@{/css/assets/vendors/material-icons/material-icons.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/css/assets/vendors/mono-social-icons/monosocialiconsfont.css}" rel="stylesheet" type="text/css">
-    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.4/sweetalert2.css}" rel="stylesheet" type="text/css">
-    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css}" rel="stylesheet" type="text/css">
-    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.1.3/mediaelementplayer.min.css}" rel="stylesheet" type="text/css">
-    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.7.0/css/perfect-scrollbar.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.4/sweetalert2.css}" rel="stylesheet"
+          type="text/css">
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css}"
+          rel="stylesheet" type="text/css">
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.1.3/mediaelementplayer.min.css}"
+          rel="stylesheet" type="text/css">
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.7.0/css/perfect-scrollbar.min.css}"
+          rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet" type="text/css">
-    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}"
+          rel="stylesheet" type="text/css">
     <link th:href="@{/css/assets/vendors/weather-icons-master/weather-icons.min.css}" rel="stylesheet" type="text/css">
-    <link th:href="@{/css/assets/vendors/weather-icons-master/weather-icons-wind.min.css}" rel="stylesheet" type="text/css">
-    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.25/daterangepicker.min.css}" rel="stylesheet" type="text/css">
-    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css}" rel="stylesheet" type="text/css">
-    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css}" rel="stylesheet" type="text/css">
-    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/assets/vendors/weather-icons-master/weather-icons-wind.min.css}" rel="stylesheet"
+          type="text/css">
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.25/daterangepicker.min.css}"
+          rel="stylesheet" type="text/css">
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css}" rel="stylesheet"
+          type="text/css">
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css}" rel="stylesheet"
+          type="text/css">
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css}" rel="stylesheet"
+          type="text/css">
     <link th:href="@{/css/assets/css/style.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/css/assets/custom/general.css}" rel="stylesheet" type="text/css">
     <!-- Head Libs -->
     <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js}"></script>
 </head>
 <body class="header-light sidebar-dark sidebar-expand">
-    <div id="wrapper" class="wrapper">
-        <nav class="navbar">
-            <!-- Logo Area -->
-            <div class="navbar-header">
-                <a href="index.html" class="navbar-brand text-center">
-                    <img class="logo-expand" alt="" th:src="@{/css/assets/demo/logo-expand.png}">
-                    <img class="logo-collapse" alt="" th:src="@{/css/assets/demo/logo-collapse.png}">
-                    <!-- <p>OSCAR</p> -->
-                </a>
-            </div>
-            <!-- /.navbar-header -->
-            <!-- Left Menu & Sidebar Toggle -->
-            <ul class="nav navbar-nav">
-                <li class="sidebar-toggle"><a href="javascript:void(0)" class="ripple"><i class="material-icons list-icon">menu</i></a>
-                </li>
-            </ul>
-            <!-- /.navbar-left -->
-            <!-- Search Form -->
-            <form class="navbar-search hidden-xs-down" role="search"><i class="material-icons list-icon">search</i>
-                <input type="text" class="search-query" placeholder="Search anything..."> <a href="javascript:void(0);" class="remove-focus"><i class="material-icons">clear</i></a>
-            </form>
-            <!-- /.navbar-search -->
-            <div class="spacer"></div>
-            <!-- Right Menu -->
-            <ul class="nav navbar-nav hidden-sm-down">
-                <li class="dropdown"><a href="javascript:void(0);" class="dropdown-toggle ripple" data-toggle="dropdown"><i class="material-icons list-icon">mail_outline</i> <span class="badge badge-pill bg-primary">3</span></a>
-                    <div class="dropdown-menu dropdown-left dropdown-card animated flipInY">
-                        <div class="card">
-                            <header class="card-header">New messages <span class="mr-l-10 badge badge-border bg-primary">3</span>
-                            </header>
-                            <ul class="list-unstyled dropdown-list-group ps ps--theme_default" data-ps-id="d00c5a32-4412-e4fc-0463-bdfac089e301">
-                                <li><a href="index.html#" class="media"><span class="d-flex user--online thumb-xs"><img th:src="@{/css/assets/demo/users/user3.jpg}" class="rounded-circle" alt=""> </span><span class="media-body"><span class="media-heading">Steve Smith</span> <small>10.14.2016 @ 2:30pm</small> <span class="media-content">I slowly updated my Behance with some recent projects ...</span></span></a>
-                                </li>
-                                <li><a href="index.html#" class="media"><span class="d-flex user--offline thumb-xs"><img th:src="@{/css/assets/demo/users/user6.jpg}" class="rounded-circle" alt=""> </span><span class="media-body"><span class="media-heading">Emily Lee</span> <small>10.14.2016 @ 2:30pm</small> <span class="media-content">Hi John!</span></span></a>
-                                </li>
-                                <li><a href="index.html#" class="media"><span class="d-flex user--online thumb-xs"><img th:src="@{/css/assets/demo/users/user2.jpg}" class="rounded-circle" alt=""> </span><span class="media-body"><span class="media-heading">Christopher Palmer</span> <small>10.14.2016 @ 2:30pm</small> <span class="media-content">Like the illustration and the indicator style. Best of luck ...</span></span></a>
-                                </li>
-                                <li><a href="index.html#" class="media"><span class="d-flex user--online thumb-xs"><img th:src="@{/css/assets/demo/users/user3.jpg}" class="rounded-circle" alt=""> </span><span class="media-body"><span class="media-heading">Steve Smith</span> <small>10.14.2016 @ 2:30pm</small> <span class="media-content">I slowly updated my Behance with some recent projects ...</span></span></a>
-                                </li>
-                                <li><a href="index.html#" class="media"><span class="d-flex user--offline thumb-xs"><img th:src="@{/css/assets/demo/users/user6.jpg}" class="rounded-circle" alt=""> </span><span class="media-body"><span class="media-heading">Emily Lee</span> <small>10.14.2016 @ 2:30pm</small> <span class="media-content">Hi John!</span></span></a>
-                                </li>
-                                <li><a href="index.html#" class="media"><span class="d-flex user--offline thumb-xs"><img th:src="@{/css/assets/demo/users/user2.jpg}" class="rounded-circle" alt=""> </span><span class="media-body"><span class="media-heading">Christopher Palmer</span> <small>10.14.2016 @ 2:30pm</small> <span class="media-content">Like the illustration and the indicator style. Best of luck ...</span></span></a>
-                                </li>
-                                <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__scrollbar-y-rail" style="top: 0px; right: 0px;"><div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></ul>
-                            <!-- /.dropdown-list-group -->
-                        </div>
-                        <!-- /.card-->
-                    </div>
-                    <!-- /.dropdown-menu -->
-                </li>
-                <!-- /.dropdown -->
-                <li class="dropdown"><a href="index.html#" class="dropdown-toggle ripple" data-toggle="dropdown"><i class="material-icons list-icon">event_available</i> <span class="badge badge-pill bg-primary">9</span></a>
-                    <div class="dropdown-menu dropdown-left dropdown-card animated flipInY">
-                        <div class="card">
-                            <header class="card-header">New notifications <span class="mr-l-10 badge badge-border bg-primary">4</span>
-                            </header>
-                            <ul class="list-unstyled dropdown-list-group ps ps--theme_default" data-ps-id="681d22a7-a750-5590-9b2c-ed15fbde8091">
-                                <li><a href="index.html#" class="media"><span class="d-flex"><i class="material-icons list-icon">check</i> </span><span class="media-body"><span class="media-heading">Invitation accepted</span> <small>10.14.2016 @ 2:30pm</small> <span class="media-content">Your invitation for Mars has been accepted ...</span></span></a>
-                                </li>
-                                <li><a href="index.html#" class="media"><span class="d-flex user--online thumb-xs"><img th:src="@{/css/assets/demo/users/user3.jpg}" class="rounded-circle" alt=""> </span><span class="media-body"><span class="media-heading">Steve Smith</span> <small>10.14.2016 @ 2:30pm</small> <span class="media-content">I slowly updated my Behance with some recent projects ...</span></span></a>
-                                </li>
-                                <li><a href="index.html#" class="media"><span class="d-flex"><i class="material-icons list-icon">event_available</i> </span><span class="media-body"><span class="media-heading">To Do</span> <small>10.14.2016 @ 2:30pm</small> <span class="media-content">Meeting with Nathan McCullum on Friday 8 AM ...</span></span></a>
-                                </li>
-                                <li><a href="index.html#" class="media"><span class="d-flex"><i class="material-icons list-icon">check</i> </span><span class="media-body"><span class="media-heading">Invitation accepted</span> <small>10.14.2016 @ 2:30pm</small> <span class="media-content">Your invitation for Mars has been accepted ...</span></span></a>
-                                </li>
-                                <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__scrollbar-y-rail" style="top: 0px; right: 0px;"><div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></ul>
-                            <!-- /.dropdown-list-group -->
-                        </div>
-                        <!-- /.card -->
-                    </div>
-                    <!-- /.dropdown-menu -->
-                </li>
-                <!-- /.dropdown -->
-                <li><a href="javascript:void(0);" class="right-sidebar-toggle ripple"><i class="material-icons list-icon">comment</i></a>
-                </li>
-            </ul>
-            <!-- /.navbar-right -->
-            <!-- User Image with Dropdown -->
-            <ul class="nav navbar-nav">
-                <li class="dropdown"><a href="javascript:void(0);" class="dropdown-toggle ripple" data-toggle="dropdown"><span class="avatar thumb-sm"><img th:src="@{/css/assets/demo/users/user-image.png}" class="rounded-circle" alt=""> <i class="material-icons list-icon">expand_more</i></span></a>
-                    <div class="dropdown-menu dropdown-left dropdown-card dropdown-card-wide">
-                        <div class="card">
-                            <header class="card-heading-extra">
-                                <div class="row">
-                                    <div class="col-8">
-                                        <h3 sec:authorize="isAuthenticated()"  sec:authentication="name" class="mr-b-10 sub-heading-font-family fw-300">Scott Adams</h3><span class="user--online">Available <i class="material-icons list-icon">expand_more</i></span>
-                                    </div>
-                                    <div class="col-4 d-flex justify-content-end"><a th:href="@{/admin/logout}" class="mr-t-10"><i class="material-icons list-icon">power_settings_new</i> Logout</a>
-                                    </div>
-                                    <!-- /.col-4 -->
-                                </div>
-                                <!-- /.row -->
-                            </header>
-                            <section class="card-header">New notifications <span class="badge badge-border bg-danger mr-l-10">4</span>
-                            </section>
-                            <ul class="list-unstyled dropdown-list-group ps ps--theme_default" data-ps-id="ee9d43cb-e953-7054-79dc-104d911a738f">
-                                <li><a href="index.html#" class="media"><span class="d-flex"><i class="material-icons list-icon">check</i> </span><span class="media-body"><span class="media-heading">Invitation accepted</span> <small>10.14.2016 @ 2:30pm</small> <span class="media-content">Your invitation for Mars has been accepted ...</span></span></a>
-                                </li>
-                                <li><a href="index.html#" class="media"><span class="d-flex user--online thumb-xs"><img th:src="@{/css/assets/demo/users/user3.jpg}" class="rounded-circle" alt=""> </span><span class="media-body"><span class="media-heading">Steve Smith</span> <small>10.14.2016 @ 2:30pm</small> <span class="media-content">I slowly updated my Behance with some recent projects and finally added a case study for thus great project ...</span></span></a>
-                                </li>
-                                <li><a href="index.html#" class="media"><span class="d-flex"><i class="material-icons list-icon">event_available</i> </span><span class="media-body"><span class="media-heading">To Do</span> <small>10.14.2016 @ 2:30pm</small> <span class="media-content">Meeting with Nathan McCullum on Friday 8 AM to discuss about an ongoing project ...</span></span></a>
-                                </li>
-                                <li><a href="index.html#" class="media"><span class="d-flex"><i class="material-icons list-icon">check</i> </span><span class="media-body"><span class="media-heading">Invitation accepted</span> <small>10.14.2016 @ 2:30pm</small> <span class="media-content">Your invitation for Mars has been accepted ...</span></span></a>
-                                </li>
-                                <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__scrollbar-y-rail" style="top: 0px; right: 0px;"><div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></ul>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-            <!-- /.navbar-right -->
-        </nav>
-        <div class="content-wrapper">
-            <!-- SIDEBAR -->
-            <aside class="site-sidebar scrollbar-enabled clearfix ps ps--theme_default ps--active-y" data-ps-id="076a02fa-0a05-537b-6609-307b61149607">
-                <!-- User Details -->
-                <div class="side-user">
-                    <a class="col-sm-12 media clearfix" href="javascript:void(0);">
-                        <figure class="media-left media-middle user--online thumb-sm mr-r-10 mr-b-0">
-                            <img th:src="@{/css/assets/demo/users/user-image.png}" class="media-object rounded-circle" alt="">
-                        </figure>
-                        <div class="media-body hide-menu">
-                            <h4 sec:authorize="isAuthenticated()" sec:authentication="name" class="media-heading mr-b-5 text-uppercase">Scott Adams</h4>
-                        </div>
-                    </a>
-                    <div class="clearfix"></div>
-                </div>
-                <!-- /.side-user -->
-                <!-- Sidebar Menu -->
-                <nav class="sidebar-nav">
-                    <ul class="nav in side-menu">
-                        <li class="menu-item-has-children"><a href="#" class="ripple"><span class="hide-menu">Dashboard</span></a></li>
-                        <li class="menu-item-has-children"><a href="xjavascript:void(0);" class="ripple"><span class="color-color-scheme"><span class="hide-menu">Users Management</span></span></a>
-                            <ul class="list-unstyled sub-menu collapse in" aria-expanded="true">
-                                <li class="li-click"><a th:href="@{/admin/listUsers}">List users</a>
-                                </li>
-                                <li class="li-click"><a th:href="@{/admin/addUser}">Add new user</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children"><a href="javascript:void(0);" class="ripple"><span class="hide-menu">Products Management</span></a>
-                            <ul class="list-unstyled sub-menu collapse" aria-expanded="false">
-                                <li class="li-click"><a th:href="@{/admin/listProducts}">List products</a>
-                                </li>
-                                <li class="li-click"><a th:href="@{/admin/addProduct}">Add new product</a>
-                                </li>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children"><a href="javascript:void(0);" class="ripple"><span class="hide-menu">Orders Management</span></a>
-                            <ul class="list-unstyled sub-menu collapse" aria-expanded="false">
-                                <li class="li-click"><a th:href="@{/admin/listOrders}">List orders</a>
-                                </li>
-                                <li class="li-click"><a href="ui-typography.html">Add new order</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children"><a href="javascript:void(0);" class="ripple"><span class="hide-menu">Categories Management</span></a>
-                            <ul class="list-unstyled sub-menu collapse" aria-expanded="false">
-                                <li class="li-click"><a th:href="@{/admin/listCategories}">List categories</a>
-                                </li>
-                                <li class="li-click"><a th:href="@{/admin/addCategory}">Add new category</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children"><a href="javascript:void(0);" class="ripple"><span class="hide-menu">Teams Management</span></a>
-                            <ul class="list-unstyled sub-menu collapse" aria-expanded="false">
-                                <li class="li-click"><a th:href="@{/admin/listTeams}">List teams</a>
-                                </li>
-                                <li class="li-click"><a th:href="@{/admin/addTeam}">Add new team</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a th:href="@{/admin/logout}"><i class="list-icon material-icons">settings_power</i> <span class="hide-menu">Log Out</span></a>
-                        </li>
-                    </ul>
-                    <!-- /.side-menu -->
-                </nav>
-                <!-- /.sidebar-nav -->
-                <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__scrollbar-y-rail" style="top: 0px; height: 765px; right: 0px;"><div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 580px;"></div></div></aside>
-            <main class="main-wrapper clearfix" style="min-height: 764px;">
-                <div class="widget-list">
-                    <div class="row">
-                        <div layout:fragment="content"></div>
-                    </div>
-                </div>
-            </main>
+<div id="wrapper" class="wrapper">
+    <nav class="navbar">
+        <!-- Logo Area -->
+        <div class="navbar-header">
+            <a href="index.html" class="navbar-brand text-center">
+                <img class="logo-expand" alt="" th:src="@{/css/assets/demo/logo-expand.png}">
+                <img class="logo-collapse" alt="" th:src="@{/css/assets/demo/logo-collapse.png}">
+                <!-- <p>OSCAR</p> -->
+            </a>
         </div>
+        <!-- /.navbar-header -->
+        <!-- Left Menu & Sidebar Toggle -->
+        <ul class="nav navbar-nav">
+            <li class="sidebar-toggle"><a href="javascript:void(0)" class="ripple"><i class="material-icons list-icon">menu</i></a>
+            </li>
+        </ul>
+        <!-- /.navbar-left -->
+        <!-- Search Form -->
+        <form class="navbar-search hidden-xs-down" role="search"><i class="material-icons list-icon">search</i>
+            <input type="text" class="search-query" placeholder="Search anything..."> <a href="javascript:void(0);"
+                                                                                         class="remove-focus"><i
+                    class="material-icons">clear</i></a>
+        </form>
+        <!-- /.navbar-search -->
+        <div class="spacer"></div>
+        <!-- Right Menu -->
+        <ul class="nav navbar-nav hidden-sm-down">
+            <li class="dropdown"><a href="javascript:void(0);" class="dropdown-toggle ripple" data-toggle="dropdown"><i
+                    class="material-icons list-icon">mail_outline</i> <span class="badge badge-pill bg-primary">3</span></a>
+                <div class="dropdown-menu dropdown-left dropdown-card animated flipInY">
+                    <div class="card">
+                        <header class="card-header">New messages <span
+                                class="mr-l-10 badge badge-border bg-primary">3</span>
+                        </header>
+                        <ul class="list-unstyled dropdown-list-group ps ps--theme_default"
+                            data-ps-id="d00c5a32-4412-e4fc-0463-bdfac089e301">
+                            <li><a href="index.html#" class="media"><span class="d-flex user--online thumb-xs"><img
+                                    th:src="@{/css/assets/demo/users/user3.jpg}" class="rounded-circle"
+                                    alt=""> </span><span class="media-body"><span
+                                    class="media-heading">Steve Smith</span> <small>10.14.2016 @ 2:30pm</small> <span
+                                    class="media-content">I slowly updated my Behance with some recent projects ...</span></span></a>
+                            </li>
+                            <li><a href="index.html#" class="media"><span class="d-flex user--offline thumb-xs"><img
+                                    th:src="@{/css/assets/demo/users/user6.jpg}" class="rounded-circle"
+                                    alt=""> </span><span class="media-body"><span class="media-heading">Emily Lee</span> <small>10.14.2016 @ 2:30pm</small> <span
+                                    class="media-content">Hi John!</span></span></a>
+                            </li>
+                            <li><a href="index.html#" class="media"><span class="d-flex user--online thumb-xs"><img
+                                    th:src="@{/css/assets/demo/users/user2.jpg}" class="rounded-circle"
+                                    alt=""> </span><span class="media-body"><span class="media-heading">Christopher Palmer</span> <small>10.14.2016 @ 2:30pm</small> <span
+                                    class="media-content">Like the illustration and the indicator style. Best of luck ...</span></span></a>
+                            </li>
+                            <li><a href="index.html#" class="media"><span class="d-flex user--online thumb-xs"><img
+                                    th:src="@{/css/assets/demo/users/user3.jpg}" class="rounded-circle"
+                                    alt=""> </span><span class="media-body"><span
+                                    class="media-heading">Steve Smith</span> <small>10.14.2016 @ 2:30pm</small> <span
+                                    class="media-content">I slowly updated my Behance with some recent projects ...</span></span></a>
+                            </li>
+                            <li><a href="index.html#" class="media"><span class="d-flex user--offline thumb-xs"><img
+                                    th:src="@{/css/assets/demo/users/user6.jpg}" class="rounded-circle"
+                                    alt=""> </span><span class="media-body"><span class="media-heading">Emily Lee</span> <small>10.14.2016 @ 2:30pm</small> <span
+                                    class="media-content">Hi John!</span></span></a>
+                            </li>
+                            <li><a href="index.html#" class="media"><span class="d-flex user--offline thumb-xs"><img
+                                    th:src="@{/css/assets/demo/users/user2.jpg}" class="rounded-circle"
+                                    alt=""> </span><span class="media-body"><span class="media-heading">Christopher Palmer</span> <small>10.14.2016 @ 2:30pm</small> <span
+                                    class="media-content">Like the illustration and the indicator style. Best of luck ...</span></span></a>
+                            </li>
+                            <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+                                <div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                            </div>
+                            <div class="ps__scrollbar-y-rail" style="top: 0px; right: 0px;">
+                                <div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+                            </div>
+                        </ul>
+                        <!-- /.dropdown-list-group -->
+                    </div>
+                    <!-- /.card-->
+                </div>
+                <!-- /.dropdown-menu -->
+            </li>
+            <!-- /.dropdown -->
+            <li class="dropdown"><a href="index.html#" class="dropdown-toggle ripple" data-toggle="dropdown"><i
+                    class="material-icons list-icon">event_available</i> <span
+                    class="badge badge-pill bg-primary">9</span></a>
+                <div class="dropdown-menu dropdown-left dropdown-card animated flipInY">
+                    <div class="card">
+                        <header class="card-header">New notifications <span
+                                class="mr-l-10 badge badge-border bg-primary">4</span>
+                        </header>
+                        <ul class="list-unstyled dropdown-list-group ps ps--theme_default"
+                            data-ps-id="681d22a7-a750-5590-9b2c-ed15fbde8091">
+                            <li><a href="index.html#" class="media"><span class="d-flex"><i
+                                    class="material-icons list-icon">check</i> </span><span class="media-body"><span
+                                    class="media-heading">Invitation accepted</span> <small>10.14.2016 @ 2:30pm</small> <span
+                                    class="media-content">Your invitation for Mars has been accepted ...</span></span></a>
+                            </li>
+                            <li><a href="index.html#" class="media"><span class="d-flex user--online thumb-xs"><img
+                                    th:src="@{/css/assets/demo/users/user3.jpg}" class="rounded-circle"
+                                    alt=""> </span><span class="media-body"><span
+                                    class="media-heading">Steve Smith</span> <small>10.14.2016 @ 2:30pm</small> <span
+                                    class="media-content">I slowly updated my Behance with some recent projects ...</span></span></a>
+                            </li>
+                            <li><a href="index.html#" class="media"><span class="d-flex"><i
+                                    class="material-icons list-icon">event_available</i> </span><span
+                                    class="media-body"><span class="media-heading">To Do</span> <small>10.14.2016 @ 2:30pm</small> <span
+                                    class="media-content">Meeting with Nathan McCullum on Friday 8 AM ...</span></span></a>
+                            </li>
+                            <li><a href="index.html#" class="media"><span class="d-flex"><i
+                                    class="material-icons list-icon">check</i> </span><span class="media-body"><span
+                                    class="media-heading">Invitation accepted</span> <small>10.14.2016 @ 2:30pm</small> <span
+                                    class="media-content">Your invitation for Mars has been accepted ...</span></span></a>
+                            </li>
+                            <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+                                <div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                            </div>
+                            <div class="ps__scrollbar-y-rail" style="top: 0px; right: 0px;">
+                                <div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+                            </div>
+                        </ul>
+                        <!-- /.dropdown-list-group -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.dropdown-menu -->
+            </li>
+            <!-- /.dropdown -->
+            <li><a href="javascript:void(0);" class="right-sidebar-toggle ripple"><i class="material-icons list-icon">comment</i></a>
+            </li>
+        </ul>
+        <!-- /.navbar-right -->
+        <!-- User Image with Dropdown -->
+        <ul class="nav navbar-nav">
+            <li class="dropdown"><a href="javascript:void(0);" class="dropdown-toggle ripple"
+                                    data-toggle="dropdown"><span class="avatar thumb-sm"><img
+                    th:src="@{/css/assets/demo/users/user-image.png}" class="rounded-circle" alt=""> <i
+                    class="material-icons list-icon">expand_more</i></span></a>
+                <div class="dropdown-menu dropdown-left dropdown-card dropdown-card-wide">
+                    <div class="card">
+                        <header class="card-heading-extra">
+                            <div class="row">
+                                <div class="col-8">
+                                    <h3 sec:authorize="isAuthenticated()" sec:authentication="name"
+                                        class="mr-b-10 sub-heading-font-family fw-300">Scott Adams</h3><span
+                                        class="user--online">Available <i
+                                        class="material-icons list-icon">expand_more</i></span>
+                                </div>
+                                <div class="col-4 d-flex justify-content-end"><a th:href="@{/admin/logout}"
+                                                                                 class="mr-t-10"><i
+                                        class="material-icons list-icon">power_settings_new</i> Logout</a>
+                                </div>
+                                <!-- /.col-4 -->
+                            </div>
+                            <!-- /.row -->
+                        </header>
+                        <section class="card-header">New notifications <span
+                                class="badge badge-border bg-danger mr-l-10">4</span>
+                        </section>
+                        <ul class="list-unstyled dropdown-list-group ps ps--theme_default"
+                            data-ps-id="ee9d43cb-e953-7054-79dc-104d911a738f">
+                            <li><a href="index.html#" class="media"><span class="d-flex"><i
+                                    class="material-icons list-icon">check</i> </span><span class="media-body"><span
+                                    class="media-heading">Invitation accepted</span> <small>10.14.2016 @ 2:30pm</small> <span
+                                    class="media-content">Your invitation for Mars has been accepted ...</span></span></a>
+                            </li>
+                            <li><a href="index.html#" class="media"><span class="d-flex user--online thumb-xs"><img
+                                    th:src="@{/css/assets/demo/users/user3.jpg}" class="rounded-circle"
+                                    alt=""> </span><span class="media-body"><span
+                                    class="media-heading">Steve Smith</span> <small>10.14.2016 @ 2:30pm</small> <span
+                                    class="media-content">I slowly updated my Behance with some recent projects and finally added a case study for thus great project ...</span></span></a>
+                            </li>
+                            <li><a href="index.html#" class="media"><span class="d-flex"><i
+                                    class="material-icons list-icon">event_available</i> </span><span
+                                    class="media-body"><span class="media-heading">To Do</span> <small>10.14.2016 @ 2:30pm</small> <span
+                                    class="media-content">Meeting with Nathan McCullum on Friday 8 AM to discuss about an ongoing project ...</span></span></a>
+                            </li>
+                            <li><a href="index.html#" class="media"><span class="d-flex"><i
+                                    class="material-icons list-icon">check</i> </span><span class="media-body"><span
+                                    class="media-heading">Invitation accepted</span> <small>10.14.2016 @ 2:30pm</small> <span
+                                    class="media-content">Your invitation for Mars has been accepted ...</span></span></a>
+                            </li>
+                            <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+                                <div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                            </div>
+                            <div class="ps__scrollbar-y-rail" style="top: 0px; right: 0px;">
+                                <div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <!-- /.navbar-right -->
+    </nav>
+    <div class="content-wrapper">
+        <!-- SIDEBAR -->
+        <aside class="site-sidebar scrollbar-enabled clearfix ps ps--theme_default ps--active-y"
+               data-ps-id="076a02fa-0a05-537b-6609-307b61149607">
+            <!-- User Details -->
+            <div class="side-user">
+                <a class="col-sm-12 media clearfix" href="javascript:void(0);">
+                    <figure class="media-left media-middle user--online thumb-sm mr-r-10 mr-b-0">
+                        <img th:src="@{/css/assets/demo/users/user-image.png}" class="media-object rounded-circle"
+                             alt="">
+                    </figure>
+                    <div class="media-body hide-menu">
+                        <h4 sec:authorize="isAuthenticated()" sec:authentication="name"
+                            class="media-heading mr-b-5 text-uppercase">Scott Adams</h4>
+                    </div>
+                </a>
+                <div class="clearfix"></div>
+            </div>
+            <!-- /.side-user -->
+            <!-- Sidebar Menu -->
+            <nav class="sidebar-nav">
+                <ul class="nav in side-menu">
+                    <li class="menu-item-has-children"><a th:href="@{/admin/dashboard}" class="ripple click-a"><span
+                            class="hide-menu">Dashboard</span></a></li>
+                    <li class="menu-item-has-children">
+                        <a href="xjavascript:void(0);" class="ripple click-a">
+                                <span class="hide-menu">Users Management</span></a>
+                        <ul class="list-unstyled sub-menu collapse" aria-expanded="true">
+                            <li class="li-click"><a th:href="@{/admin/listUsers}">List users</a>
+                            </li>
+                            <li class="li-click"><a th:href="@{/admin/addUser}">Add new user</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children"><a href="javascript:void(0);" class="ripple click-a"><span
+                            class="hide-menu">Products Management</span></a>
+                        <ul class="list-unstyled sub-menu collapse" aria-expanded="false">
+                            <li class="li-click"><a th:href="@{/admin/listProducts}">List products</a>
+                            </li>
+                            <li class="li-click"><a th:href="@{/admin/addProduct}">Add new product</a>
+                            </li>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children"><a href="javascript:void(0);" class="ripple click-a"><span
+                            class="hide-menu">Orders Management</span></a>
+                        <ul class="list-unstyled sub-menu collapse" aria-expanded="false">
+                            <li class="li-click"><a th:href="@{/admin/listOrders}">List orders</a>
+                            </li>
+                            <li class="li-click"><a th:href="@{/admin/addOrder}">Add new order</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children"><a href="javascript:void(0);" class="ripple click-a"><span
+                            class="hide-menu">Categories Management</span></a>
+                        <ul class="list-unstyled sub-menu collapse" aria-expanded="false">
+                            <li class="li-click"><a th:href="@{/admin/listCategories}">List categories</a>
+                            </li>
+                            <li class="li-click"><a th:href="@{/admin/addCategory}">Add new category</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children"><a href="javascript:void(0);" class="ripple click-a"><span
+                            class="hide-menu">Teams Management</span></a>
+                        <ul class="list-unstyled sub-menu collapse" aria-expanded="false">
+                            <li class="li-click"><a th:href="@{/admin/listTeams}">List teams</a>
+                            </li>
+                            <li class="li-click"><a th:href="@{/admin/addTeam}">Add new team</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a th:href="@{/admin/logout}"><i class="list-icon material-icons">settings_power</i> <span
+                            class="hide-menu">Log Out</span></a>
+                    </li>
+                </ul>
+                <!-- /.side-menu -->
+            </nav>
+            <!-- /.sidebar-nav -->
+            <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+                <div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+            </div>
+            <div class="ps__scrollbar-y-rail" style="top: 0px; height: 765px; right: 0px;">
+                <div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 580px;"></div>
+            </div>
+        </aside>
+        <main class="main-wrapper clearfix" style="min-height: 764px;">
+
+            <div class="widget-list">
+                <div class="row">
+                    <div layout:fragment="content"></div>
+                </div>
+            </div>
+        </main>
     </div>
-    </div>
-    <!-- FOOTER -->
-    <footer class="footer text-center clearfix">2017 © Oscar Admin brought to you by UnifatoThemes</footer>
-    <!--/ #wrapper -->
-    <!-- Scripts -->
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.2/umd/popper.min.js}"></script>
-    <script th:src="@{/css/assets/js/bootstrap.min.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.1.3/mediaelementplayer.min.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.7.0/metisMenu.min.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.7.0/js/perfect-scrollbar.jquery.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.4/sweetalert2.min.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js}"></script>
-    <script th:src="@{/css/assets/vendors/charts/utils.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js}"></script>
-    <script th:src="@{/css/assets/vendors/charts/excanvas.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/mithril/1.1.1/mithril.js}"></script>
-    <script th:src="@{/css/assets/vendors/theme-widgets/widgets.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/clndr/1.4.7/clndr.min.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.25/daterangepicker.min.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.min.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.time.min.js}"></script>
-    <script th:src="@{/css/assets/js/theme.js}"></script>
-    <script th:src="@{/css/assets/js/custom.js}"></script>
-    <script th:src="@{/css/assets/custom/general.js}"></script>
-    <script th:src="@{/js/admin/product.js}"></script>
-    <script th:src="@{/js/admin/category.js}"></script>
-    <script th:src="@{/js/admin/team.js}"></script>
-    <script th:src="@{/js/admin/user.js}"></script>
-    <script th:src="@{/js/admin/order.js}"></script>
+</div>
+</div>
+<!-- FOOTER -->
+<footer class="footer text-center clearfix">2017 © Oscar Admin brought to you by UnifatoThemes</footer>
+<!--/ #wrapper -->
+<!-- Scripts -->
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.2/umd/popper.min.js}"></script>
+<script th:src="@{/css/assets/js/bootstrap.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.1.3/mediaelementplayer.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.7.0/metisMenu.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.7.0/js/perfect-scrollbar.jquery.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.4/sweetalert2.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js}"></script>
+<script th:src="@{/css/assets/vendors/charts/utils.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js}"></script>
+<script th:src="@{/css/assets/vendors/charts/excanvas.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/mithril/1.1.1/mithril.js}"></script>
+<script th:src="@{/css/assets/vendors/theme-widgets/widgets.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/clndr/1.4.7/clndr.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.25/daterangepicker.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.time.min.js}"></script>
+<script th:src="@{/css/assets/js/theme.js}"></script>
+<script th:src="@{/css/assets/js/custom.js}"></script>
+<script th:src="@{/css/assets/custom/general.js}"></script>
+<script th:src="@{/js/admin/product.js}"></script>
+<script th:src="@{/js/admin/category.js}"></script>
+<script th:src="@{/js/admin/team.js}"></script>
+<script th:src="@{/js/admin/user.js}"></script>
+<script th:src="@{/js/admin/order.js}"></script>
+<script th:src="@{/js/admin/dashboard.js}"></script>
+<script th:src="@{https://www.gstatic.com/charts/loader.js}"></script>
 </body>
 </html>
