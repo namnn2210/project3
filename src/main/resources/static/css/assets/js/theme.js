@@ -272,11 +272,11 @@
       document.addEventListener('click', function(event) {
         var $rightSidebar = document.getElementsByClassName('right-sidebar')[0],
             $chatPanel = document.getElementsByClassName('chat-panel')[0];
-        var isInsideContainer = $rightSidebar.contains( event.target ) || $chatPanel.contains(event.target);
-        if( !isInsideContainer ) {
-          document.body.classList.remove('right-sidebar-expand');
-          $chatPanel.hidden = 'hidden';
-        }
+        // var isInsideContainer = $rightSidebar.contains( event.target ) || $chatPanel.contains(event.target);
+        // if( !isInsideContainer ) {
+        //   document.body.classList.remove('right-sidebar-expand');
+        //   $chatPanel.hidden = 'hidden';
+        // }
       });
 		},
 

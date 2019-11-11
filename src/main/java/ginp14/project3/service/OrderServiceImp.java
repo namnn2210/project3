@@ -36,4 +36,9 @@ public class OrderServiceImp implements OrderService {
     public Order findById(int id) {
         return orderRepository.findById(id);
     }
+
+    @Override
+    public List<Order> findAllByStatus(boolean status) {
+        return orderRepository.findAllByStatus(status);
+    }
 }
